@@ -1,0 +1,127 @@
+
+.wrapper{
+  font-size: 120%;
+  margin-top: 57px;
+  background: var(--lighter-color);
+}
+h1{
+  text-overflow: ellipsis;
+}
+p{
+  margin: 0 0 15px 15px;
+  padding: 0;
+}
+
+.colored-text{
+  color:var(--main-color);
+}
+.colored-text-second{
+  color:var(--secondary-color);
+}
+img{
+  object-fit: cover;
+  width: 100%;
+  height: 200px;
+}
+.bookmark{
+  width: 100%;
+  border: none;
+  padding: 8px 2px;
+  border-bottom: 4px solid var(--lighter-color);
+  font-size: 17px;
+}
+
+.active{
+  border-color: var(--main-color);
+  
+  -webkit-transition:  .8s; /* For Safari 3.1 to 6.0 */
+  transition:  .8s;
+  
+}
+.bookmarks{
+  width: 100%;
+  margin: 0;
+  font-weight: bold;
+  background: var(--lighter-color);
+}
+.col-3{
+  padding: 8px 0px;
+  text-align: center;
+}
+
+.section{
+ 
+}
+
+a{
+  color:  var(--main-color);
+}
+
+.like , .unlike{
+  position: relative;
+  bottom: -8px;
+  font-size: 30px;
+  padding: 0;
+  margin: 0;
+  margin-right: 15px;
+}
+.like img, .unlike img{
+  position: relative;
+  bottom: 6px;
+  width: 30px;
+  height: 30px;
+  -webkit-transition:  .3s; /* For Safari 3.1 to 6.0 */
+  transition:  .3s;
+}
+.like img:hover, .unlike img:hover{
+  opacity: .5;
+  cursor: pointer;
+}
+.map{
+  padding: 0 25px;
+}
+.type{
+  margin: 0;
+}
+a.anchor {
+  position: relative;
+  top: -57px;
+  visibility: hidden;
+}
+
+.col-md-6{
+  padding: 0;
+}
+.col-12 .section{
+  padding: 25px;
+}
+
+.header-photo img.images{
+  object-fit: cover;
+  width: 100%;
+}
+.header-photo img.no-images
+{
+  height: 64px;
+  width: 64px;
+  margin: 43px;
+} 
+img{
+  max-width: 100%;
+}
+.header-photo{
+  text-align: center;
+}
+
+.main-container {
+  min-height: 100vh; /* will cover the 100% of viewport */
+  overflow: hidden;
+  display: block;
+  position: relative;
+  padding-bottom: 150px; /* height of your footer */
+ }
+ .footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+ }

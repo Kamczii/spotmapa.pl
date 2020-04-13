@@ -1,0 +1,55 @@
+.contain{
+    width: 100%;
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: center;
+}
+.header{
+    box-sizing: border-box;
+    margin-top:67px;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    padding: 8px;
+    font-size: 36px;
+    background: var(--white-color);
+    border-radius: 5px;
+    color: var(--secondary-color);
+}
+
+@media only screen and (min-width: 768px) {
+    .wrapper{
+      border-radius: 6px;
+    }
+    .header{
+        margin-left: 57px;
+        max-width: 50%;
+    }
+  }
+
+@media only screen and (min-width: 768px) {
+    .contain{
+        margin: 5px 5px 5px 5px;
+        margin-bottom: 14px;
+    }
+}
+
+.spot{
+    margin: 10px;
+}
+
+.main-container {
+    min-height: 100vh; /* will cover the 100% of viewport */
+    overflow: hidden;
+    display: block;
+    position: relative;
+    padding-bottom: 100px; /* height of your footer */
+   }
+   .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+   }

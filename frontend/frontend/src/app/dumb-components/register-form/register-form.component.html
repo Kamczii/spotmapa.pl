@@ -1,0 +1,78 @@
+<div class="ld ldt-grow-ttb">
+
+	<form [formGroup]="registerForm">
+		<p class="hint-text"><b>Zarejestruj się za pomocą facebook'a</b></p>
+		<a class="fb connect" (click)="facebookRegister()">Rejestracja</a>
+		<div class="or-seperator"><b>lub</b></div>
+	<p class="hint-text"><b>Wypełnij formularz, żeby stworzyć konto!</b></p>
+
+	<div class="form-group">
+		<input type="text" class="form-control" placeholder="Nazwa użytkownika" required="required" formControlName="username" (keyup)="checkNickname($event)">
+	  </div>
+	<div *ngIf="submitted && f.username.hasError('required')" class="form-group error">
+			<i class="fa fa-times"></i> Nazwa wymagana
+	</div>
+	<div *ngIf="submitted && f.username.hasError('minlength')" class="form-group error">
+			<i class="fa fa-times"></i> Nazwa conajmniej 4 znaki
+	</div>
+	<div *ngIf="nicknameExist" class="form-group error">
+			<i class="fa fa-times"></i> Nazwa istnieje
+	</div>
+
+	<div class="form-group">
+		<input type="email" class="form-control" placeholder="E-mail" required="required" formControlName="email" (keyup)="checkEmail($event)">
+	</div>
+	<div *ngIf="submitted && f.email.hasError('required')" class="form-group error">
+			<i class="fa fa-times"></i> E-mail wymagany
+	</div>
+	<div *ngIf="emailExist" class="form-group error">
+			<i class="fa fa-times"></i> E-mail istnieje
+	</div>
+	<div *ngIf="submitted && f.email.hasError('email')" class="form-group error">
+			<i class="fa fa-times"></i> To nie jest adres e-mail
+	</div>
+
+	<div class="form-group">
+		<input type="password" class="form-control" placeholder="Hasło" required="required" formControlName="password" (focus)="passwordTouched = true" (focusout)="passwordTouched = false">
+	</div>
+	<div *ngIf="submitted && f.password.hasError('required')" class="form-group error">
+			<i class="fa fa-times"></i> Hasło wymagane
+	</div>
+	<div *ngIf="passwordTouched">
+			<div [ngClass]="f.password.hasError('required') || f.password.hasError('hasNumber')  ? 'text-danger' :'text-success'" class="form-group error">
+					<i [ngClass]="f.password.hasError('required') || f.password.hasError('hasNumber')  ? 'fa fa-times' :'fa fa-check'" ></i> Ma co najmniej jedną cyfrę
+			</div>
+			<div [ngClass]="f.password.hasError('required') || f.password.hasError('hasCapitalCase')  ? 'text-danger' :'text-success'" class="form-group error">
+					<i [ngClass]="f.password.hasError('required') || f.password.hasError('hasCapitalCase')  ? 'fa fa-times' :'fa fa-check'" ></i> Ma co najmniej jedną duża literę
+			</div>
+			<div [ngClass]="f.password.hasError('required') || f.password.hasError('hasSmallCase')  ? 'text-danger' :'text-success'" class="form-group error">
+					<i [ngClass]="f.password.hasError('required') || f.password.hasError('hasSmallCase')  ? 'fa fa-times' :'fa fa-check'" ></i> Ma co najmniej jedną małą literę
+			</div>
+			<div [ngClass]="f.password.hasError('required') || f.password.hasError('minlength') ? 'text-danger' :'text-success'" class="form-group error">
+					<i [ngClass]="f.password.hasError('required') || f.password.hasError('minlength') ? 'fa fa-times' :'fa fa-check'" ></i> Ma co najmniej 8 znaków
+			</div>
+			<div [ngClass]="f.password.hasError('required') || f.password.hasError('maxlength') ? 'text-danger' :'text-success'" class="form-group error">
+					<i [ngClass]="f.password.hasError('required') || f.password.hasError('maxlength') ? 'fa fa-times' :'fa fa-check'" ></i> Ma co najwyżej 20 znaków
+			</div>
+	</div>
+
+	<div class="form-group">
+		<input type="password" class="form-control" placeholder="Potwierdź hasło" required="required" formControlName="rpassword">
+	</div>
+	<div *ngIf="submitted && f.rpassword.hasError('required')" class="form-group error">
+			<i class="fa fa-times"></i> Powtórz hasło
+	</div>
+	<div *ngIf="submitted && f.rpassword.hasError('MatchPassword')" class="form-group error">
+			<i class="fa fa-times"></i> Hasła nie są zgodne
+	</div>
+
+	<div class="form-group">
+		<label class="checkbox-inline"><input name="checkbox" formControlName="checkbox" type="checkbox" required="required"> Akceptuję warunki <a href="#">Terms &amp; Conditions</a></label>
+	</div>
+	
+	<div *ngIf="submitted && f.checkbox.hasError('required')" class="form-group error">
+			<i class="fa fa-times"></i> Zaakceptuj warunki
+	</div>
+	<input type="submit" class="btn submit-button btn-block" value="Rejestracja" (click)="register()">
+</form>
+</div>

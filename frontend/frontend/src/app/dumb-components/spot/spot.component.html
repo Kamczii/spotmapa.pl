@@ -1,0 +1,90 @@
+<!-- The grid: four columns -->
+
+<div class="main-container">
+                <div class="row">
+                                <div class="col-md-3 col-sm-12">
+                                
+                                </div>
+                
+                                <div class="col-md-6 col-12 wrapper">
+                                        
+                                                <div class="ld ldt-float-right-in header-photo" *ngIf="spot">
+                                                        <img class="images" *ngIf="spot.images[0]" alt="" src="{{spot.images[0]}}">
+                                                        <img class="no-images" *ngIf="!spot.images[0]" src="../../../assets/no-images.png">
+                                                </div>   
+                                                <div class="row bookmarks ld ldt-float-right-in">
+                                                                <div class="col-3 bookmark"  [ngClass]="currentFragmet == 'info' ? 'active':''">
+                                                                        <a [routerLink]="" fragment="info">Info</a>
+                                                                </div>
+                                                                <div class="col-3 bookmark" [ngClass]="currentFragmet == 'location' ? 'active':''">
+                                                                        <a  class="" [routerLink]="" fragment="location">Lokalizacja</a>
+                                                                </div>
+                                                                <div class="col-3 bookmark" [ngClass]="currentFragmet == 'gallery' ? 'active':''">
+                                                                        <a  class="" [routerLink]="" fragment="gallery">Galeria</a>
+                                                                </div>
+                                                                <div class="col-3 bookmark" [ngClass]="currentFragmet == 'opinions' ? 'active':''">
+                                                                                <a  class="" [routerLink]="" fragment="opinions">Opinie</a>
+                                                                </div>
+                                                 </div>     
+                                                 
+                                                 <a class="anchor"  id="info"></a>
+                                                 <div *ngIf="spot" class="section ld ldt-float-left-in" >
+                                                                <div class="row">
+                                                                        <div class="col-md-8 col-sm-12">
+                        
+                                                                                        <p class="type"><a href="#">{{spot.spotType}}</a>  
+                                                                                        </p>
+                                                                        </div>
+                                                                        <div class="col-md-8 col-6">
+                                                                        
+                                                                                        <h1 class="colored-text">{{spot.name}}</h1>
+                                                                        </div>
+                                                                        <div class="col-md-4 col-6 text-right">
+                                                                                <p>
+                                                                                                <span title="like" *ngIf="!isLiked" class="unlike"><img class="ld ldt-bounce-in" src="../../../assets/icons/unlike.png" (click)="likePost()"> {{spot.likes}}</span>
+                                                                                                <span title="unlike" *ngIf="isLiked" class="like"><img  class="ld ldt-bounce-in" src="../../../assets/icons/like.png" (click)="unlikePost()"> {{spot.likes}}</span>   
+                                                                                </p>
+                                                                                
+                                                                        </div>
+                                                                </div> 
+                                                                      
+                                                                <p class="colored-text-second" style="font-size: 30px;position: relative;top:15px;"><img style="height:50px;width:50px;position: relative;top:-15px; margin-right: 5px" src="{{spot.user.avatar.link}}" >{{spot.user.username}}</p>
+                                                                <p>{{spot.description}}</p>
+                                                                
+                                                </div>
+                
+                                                <a class="anchor" id="location"></a>
+                                                <div class="section ld ldt-float-right-in" >
+                                                                <h1 class="colored-text">Lokalizacja</h1>
+                                                </div>
+                                                <div class="map">
+                                                 <div #map style="height: 300px"></div> 
+                
+                                                </div>
+                                                <a class="anchor"id="gallery"></a>
+                                                <div class="section" >
+                                                                <h1 class="colored-text">Galeria</h1>
+                                                                <div *ngIf="spot">
+                                                                        <app-photo-gallery   *ngIf="spot.images[0]" [images]="spot.images"></app-photo-gallery>
+                                                                        <p *ngIf="!spot.images[0]">Brak zdjęć</p>
+                                                                </div>
+                                                </div>
+                
+                                                <a class="anchor" id="opinions"></a>
+                                                <div class="section ld ldt-float-right-in" >
+                                                                <h1 class="colored-text">Opinie</h1>
+                                                                <app-comment-list></app-comment-list>
+                                                </div>
+                
+                                                 
+                                </div>
+                
+                                <div class="col-md-3 col-sm-12">
+                                        
+                                </div>
+                        
+                </div>
+                <div class="footer">
+                        <app-footer></app-footer>
+                </div>
+</div>

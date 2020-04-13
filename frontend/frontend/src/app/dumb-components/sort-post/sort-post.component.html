@@ -1,0 +1,33 @@
+<div class="sort-container row">
+
+  <div class="title col-12 col-md-4"><span class="sort-info">{{title}}</span><span *ngIf="isSorting && actualSortField && actualSortType"> przez <span class="sort-info">{{actualSortField}}</span><span  class="sort-info">{{actualSortType}}</span>
+    </span>
+  </div>
+
+  <div class="form-wrap col-12 col-md-8">
+    <form  [formGroup]="sortingForm">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-12 col-md-3">
+            <select formControlName="fieldName">
+                <option selected disabled>{{postFields[0].value}}</option>
+                <option *ngFor=" let i=index; let field of postFields | slice: 1" value="{{i+1}}">{{field.value}}</option>
+              </select>
+        </div>
+        <div class="col-12 col-md-3">
+            <select formControlName="sortType">
+                <option selected disabled>{{sortTypes[0].value}}</option>
+                <option *ngFor=" let i=index; let field of sortTypes | slice: 1" value="{{i+1}}">{{field.value}}</option>
+            </select>
+          </div>
+          <div class="col-12 col-md-4">
+
+              <button type="submit"   [disabled]="!sortingForm.valid" class="sort-button" (click)="sort()">Sortuj</button>
+              <button type="submit"  class="cancel-button" (click)="unSort()">Anuluj</button>
+          </div>
+
+      </div>
+  </form>
+  </div>
+  <div style="clear:both"></div>
+</div>

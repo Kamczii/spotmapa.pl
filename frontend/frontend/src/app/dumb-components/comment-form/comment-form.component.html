@@ -1,0 +1,8 @@
+<div class="comment-input">
+        <form (submit)="addComment()" [formGroup]="form">
+            <textarea formControlName="commentControl" placeholder="Napisz co myślisz ..."></textarea>
+            <div class="submit">
+                <button [disabled]="!form.valid" type="submit">Skomentuj</button>
+            </div>
+        </form>
+      </div>

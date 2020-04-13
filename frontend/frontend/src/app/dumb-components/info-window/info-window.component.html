@@ -1,0 +1,13 @@
+<div class="container">
+    <p><a [routerLink]="['/spots',spot.id]">{{spot.name}}</a></p>
+    <small><p>{{spot.spotType}}</p></small>
+      <img src="{{spot.images[0]}}">
+    <p>{{spot.description}}</p>
+    <div class="">
+        <ul>
+          <li>{{spot.likes}}  <img class="icon-like" src="../../../assets/icons/unlike.png"> </li>
+          <li> | </li>
+          <li>{{spot.comments}}  <img  class="icon-com" src="../../../assets/icons/comment.png">  </li>
+        </ul>
+    </div>
+</div>

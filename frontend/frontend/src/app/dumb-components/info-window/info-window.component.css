@@ -1,0 +1,41 @@
+li{
+    display: inline;
+    padding:0px;
+    font-size: 24px;
+  }
+  
+  ul{
+    list-style-type: none;
+    text-align: right;
+  }
+  p{
+      margin: 0px;
+      padding: 0px;
+  }
+  img{
+      max-width: 100%;
+      padding: 10px 0px;
+  }
+
+  .container{
+      font-size: 3vh;
+      padding: 0px;
+  }
+  .slideshow{
+      width: 100%;
+  }
+
+  .app-gallery{
+      margin: 5px 0px;
+  }
+
+  img.icon-like{
+      width: 24px;
+      position: relative;
+      bottom: 7px;
+  }
+  img.icon-com{
+    width: 24px;
+    position: relative;
+    bottom: 3px;
+}

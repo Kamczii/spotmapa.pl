@@ -1,0 +1,71 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~@angular/cdk/overlay-prebuilt.css';
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700&display=swap&subset=latin-ext');
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+html, body {
+    height: 100% !important;
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden;
+    background-position: center;
+    background-repeat: repeat-y;
+    background-size: cover;
+    font-family: 'Raleway', sans-serif;
+  }
+
+  @media (max-width: 1200px) {body{
+      background-image: url('./assets/bg1200.jpg');
+    }  }
+  
+  @media (min-width: 1200px) { 
+    body{
+      
+      
+    background-image: url('./assets/bg1920.jpg'); 
+    }
+  }
+
+  :root {
+    --main-color: #01e08f; 
+    --secondary-color: #013870; 
+    --white-color: #edf5e1;
+    --lighter-color: #f6faf0;
+    --black-color: #1d2323;
+  }
+
+a{
+    cursor: pointer;
+}
+
+.error{
+  color: red;
+  font-weight: bold;
+}
+
+.ld{
+  animation-duration:0.5s;
+}
+
+.wrapper{
+  background: white;
+}
+
+h1{
+  font-weight: bold;
+}
+
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  
+  border-color: var(--main-color);
+}
+.mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple{
+  background:  var(--main-color);
+}
+
+
+button{
+  outline:none;
+}

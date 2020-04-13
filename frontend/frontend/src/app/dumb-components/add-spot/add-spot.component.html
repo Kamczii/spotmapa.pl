@@ -1,0 +1,109 @@
+
+<div class=" creating-container ld ldt-fade-in ">
+    <form [formGroup]="creatingForm">
+  
+        <div #partone class="form-part">
+          <legend><span class="number">1</span>Szczegóły</legend>
+
+          <div class="row">
+              <div class="col-sm-12 col-md-4">
+                <input class="form-input" type="text" formControlName="name" placeholder="Nazwa">
+              </div>
+              <div class="col-sm-12 col-md-8 error">
+                  <div *ngIf="submitted" class="ld loading-animation 
+                  ldt-float-down-in">
+                        <input *ngIf="submitted && f.name.hasError('required')" type="text" value="Nazwa wymagana" disabled>
+                        <input *ngIf="submitted && f.name.hasError('minlength')" type="text" value="Minimalna długość to 4" disabled>
+                        <input *ngIf="submitted && f.name.hasError('maxlength')" type="text" value="Maksymalna długość to 30" disabled>
+                  </div>
+              </div>
+          </div>
+          
+          <div class="row">
+              <div class="col-sm-12 col-md-4 radio">
+                  <mat-radio-group
+                  formControlName="type">
+                  <mat-radio-button class=""  value="SPOT">
+                    Spot
+                  </mat-radio-button>
+                  <br>
+                  <mat-radio-button class=""  value="SKATEPARK">
+                    Skatepark
+                  </mat-radio-button>
+                </mat-radio-group>
+              </div>
+              <div class="col-sm-12 col-md-8">
+                    <div class="col-sm-12 col-md-8 error">
+                            <div *ngIf="submitted" class="ld loading-animation 
+                            ldt-float-down-in">
+                            <input *ngIf="submitted && f.type.hasError('required')" type="text" value="Typ wymagany" disabled>
+                            </div>
+                    </div>
+            </div>
+          </div>
+
+        </div>
+  
+        <div #parttwo class="form-part">
+                 <legend><span class="number">2</span>Lokalizacja</legend>
+
+                <div class="row">
+                    <div class="col-sm-12 ld ldt-fade-in">
+      
+                        <div #map style="height: 300px"></div>
+                    </div>
+                    <div class="col-sm-12">
+                            <div *ngIf="submitted" class="ld loading-animation 
+                            ldt-float-down-in">
+                            <input *ngIf="submitted && marker == null" type="text" value="Lokalizacja wymagana" disabled>
+                            </div>
+                  </div>
+                </div> 
+        </div>
+
+        <div #parttwo class="form-part">
+            <legend><span class="number">3</span>Opis</legend>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+  
+                    <textarea class="form-input" type="text" formControlName="description" placeholder=""></textarea>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                        <div *ngIf="submitted" class="ld loading-animation 
+                        ldt-float-down-in">
+                        <input *ngIf="submitted && f.description.hasError('required')" type="text" value="Opis wymagany" disabled>
+                <input *ngIf="submitted && f.description.hasError('minlength')" type="text" value="Minimalna długość to 10" disabled>
+                <input *ngIf="submitted && f.description.hasError('maxlength')" type="text" value="Maksymalna długość to 400" disabled>
+                </div>
+              </div>
+            </div>
+        </div>
+  
+        <div #parttwo class="form-part">
+            <legend><span class="number">4</span>Zdjęcia</legend>
+            <div *ngFor='let url of urls; let i = index' class="image-to-upload">
+              <img *ngIf='url'  [src]="url" height="200">
+              <div *ngIf='url' (click)="remove(i)"><i class="fa fa-times"></i></div>
+            </div>
+            <br>
+            <label for="file-upload" class="custom-file-upload">
+                    <i class="fa fa-image"></i> Dodaj
+            </label>
+            <input id="file-upload"  formControlName="files" type='file'   (change)="onSelectFile($event)" accept="image/*" (change)="onChange($event)" multiple>
+        </div>
+
+        <div #partthree class="form-part">
+            <legend><span class="number">5</span>Potwierdź</legend>
+            <button  (click)="addSpot()">Dodaj miejscówkę</button>
+        </div>
+    </form>
+  </div>
+  
+  <div id="popup">
+    <div class="popup">
+      {{addedSpot}}<br> dodano!
+    </div>
+  </div>
+
+  <app-footer></app-footer>

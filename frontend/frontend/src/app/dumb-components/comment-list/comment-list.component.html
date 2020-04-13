@@ -1,0 +1,10 @@
+<div *ngIf="coms" class="content-wrapper">
+        <div *ngIf="auth.isAuthenticated()" class="input">
+            <app-comment-form (refreshComments)="getComments()" [id]="id"></app-comment-form>
+        </div>
+        <app-comment-preview *ngFor="let comment of coms" [comment]="comment"></app-comment-preview>
+        
+    <p *ngIf="coms.length == 0" >
+        Brak opinii
+    </p>
+</div>
