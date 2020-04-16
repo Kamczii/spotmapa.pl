@@ -1,5 +1,5 @@
 import { BrowserModule, HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AppRoutingModule } from './app-routing.module';
@@ -94,7 +94,7 @@ export class MyHammerConfig extends HammerGestureConfig  {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        whitelistedDomains: ['localhost:8080','192.168.1.2:8080','s41.mydevil.net:38501','spotmapa.pl']
+        whitelistedDomains: ['localhost:8080','192.168.1.2:8080','s41.mydevil.net:38501','spotmapa.pl','localhost:8443']
       }
     })
   ],
@@ -102,7 +102,7 @@ export class MyHammerConfig extends HammerGestureConfig  {
     {
       provide: HAMMER_GESTURE_CONFIG,
       useClass: MyHammerConfig
-  }
+  },
   ],
   entryComponents: [
     InfoWindowComponent

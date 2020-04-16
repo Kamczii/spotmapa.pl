@@ -4,7 +4,8 @@
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
-    background: var(--lighter-color);
+    background: var(--white-color);
+    color: var(--secondary-color);
     padding: 0 16px;
     border-radius: 5px;
     margin-top: 85px;
@@ -17,7 +18,7 @@
   }
   .number{
     background:var(--main-color);
-      color: var(--white-color);
+      color: var(--secondary-color);
       height: 30px;
       width: 30px;
       display: inline-block;

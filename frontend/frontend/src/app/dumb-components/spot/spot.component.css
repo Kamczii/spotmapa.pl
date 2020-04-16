@@ -2,7 +2,9 @@
 .wrapper{
   font-size: 120%;
   margin-top: 57px;
-  background: var(--lighter-color);
+  color: var(--secondary-color);
+  background: var(--white-color);
+  box-shadow: -1rem 0 3rem #000;
 }
 h1{
   text-overflow: ellipsis;
@@ -13,10 +15,10 @@ p{
 }
 
 .colored-text{
-  color:var(--main-color);
+  color: var(--secondary-color);
 }
 .colored-text-second{
-  color:var(--secondary-color);
+  color: var(--secondary-color);
 }
 img{
   object-fit: cover;
@@ -27,22 +29,25 @@ img{
   width: 100%;
   border: none;
   padding: 8px 2px;
-  border-bottom: 4px solid var(--lighter-color);
+  border-bottom: 4px solid var(--white-color);
   font-size: 17px;
 }
 
 .active{
-  border-color: var(--main-color);
-  
+  border-color: var(--secondary-color);
   -webkit-transition:  .8s; /* For Safari 3.1 to 6.0 */
   transition:  .8s;
   
+}
+
+.active a{
+  color: var(--secondary-color);
 }
 .bookmarks{
   width: 100%;
   margin: 0;
   font-weight: bold;
-  background: var(--lighter-color);
+  background: var(--white-color);
 }
 .col-3{
   padding: 8px 0px;
@@ -82,6 +87,9 @@ a{
 }
 .type{
   margin: 0;
+}
+.type a{
+  color: var(--secondary-color);
 }
 a.anchor {
   position: relative;

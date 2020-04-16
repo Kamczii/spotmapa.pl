@@ -49,9 +49,9 @@ a{
 }
 
 .submit-button{
-    background: var(--secondary-color);
-    border-color: var(--secondary-color);
-    color: var(--white-color);
+    background: var(--main-color);
+    border-color: var(--main-color);
+    color: var(--secondary-color);
     width: 100%;
     border-radius:5px;
     padding: 10px 0;

@@ -51,9 +51,9 @@ public class ImgurController {
     }
     
     @PostMapping(value = "/private/spot/{id}/images", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public List<BasicImgurResponse> uploadImagesToSpot(@PathVariable Long id, @RequestParam List<MultipartFile> file){
+    public List<BasicImgurResponse> uploadImagesToSpot(@PathVariable Long id, @RequestParam List<MultipartFile> files){
         try {
-            return service.addImagesToSpot(file,id);
+            return service.addImagesToSpot(files,id);
         } catch (IOException ex) {
             Logger.getLogger(ImgurController.class.getName()).log(Level.SEVERE, null, ex);
             return null;

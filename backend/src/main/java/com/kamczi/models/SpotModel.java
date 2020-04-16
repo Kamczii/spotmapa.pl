@@ -11,7 +11,6 @@ import com.kamczi.entities.User;
 import com.kamczi.enums.SpotType;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -33,7 +32,6 @@ public class SpotModel {
     private Double lng;
     private Double lat;
     private List<String> images = new ArrayList();
-    
     public SpotModel(){}
     
     public SpotModel(Spot spot){

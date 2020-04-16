@@ -9,28 +9,15 @@ html, body {
     margin: 0 !important;
     padding: 0 !important;
     overflow-x: hidden;
-    background-position: center;
-    background-repeat: repeat-y;
-    background-size: cover;
+    background-color: #100e17;
     font-family: 'Raleway', sans-serif;
   }
 
-  @media (max-width: 1200px) {body{
-      background-image: url('./assets/bg1200.jpg');
-    }  }
-  
-  @media (min-width: 1200px) { 
-    body{
-      
-      
-    background-image: url('./assets/bg1920.jpg'); 
-    }
-  }
 
   :root {
-    --main-color: #01e08f; 
-    --secondary-color: #013870; 
-    --white-color: #edf5e1;
+    --main-color: #5199FF; 
+    --secondary-color: #eaeaeb; 
+    --white-color: #17141d;
     --lighter-color: #f6faf0;
     --black-color: #1d2323;
   }
@@ -68,4 +55,19 @@ h1{
 
 button{
   outline:none;
+}
+
+
+.gm-style-iw {
+  background: var(--white-color) !important;
+  padding: 0px !important;
+  margin: 0 !important;
+  max-height: 325px !important;
+  width:300px !important;
+  overflow: hidden !important;
+ 
+}
+
+.gm-style-iw-d button{
+  background-color: red;
 }

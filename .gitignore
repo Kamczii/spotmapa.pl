@@ -3,3 +3,5 @@ frontend/frontend/dist/frontend
 backend/target
 backend/src/main/resources
 server
+frontend/frontend/node_modules
+frontend/frontend/src/environments/environment.prod.ts

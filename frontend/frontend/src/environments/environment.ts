@@ -11,7 +11,7 @@ export const environment = {
   audience: 'https://k4mczi/api',
   redirectUri: 'http://localhost:4200/callback',
   requestedScopes: 'openid , profile',
-  api_endpoint: 'http://localhost:8080/spotmap-api',
+  api_endpoint: 'https://localhost:8443/spotmap-api',
   assets: '../../../assets/'
 };
 

@@ -18,10 +18,9 @@
     padding: 0 !important;
 }	
 .navbar {
-    background: var(--secondary-color);
+    background: var(--main-color);
     padding-left: 16px;
     padding-right: 16px;
-    border-bottom: 1px solid var(--secondary-color);
     border-radius: 0;
 }
 
@@ -30,7 +29,7 @@
     font-weight: bold;
 }
 .navbar-brand:hover{
-    color: var(--main-color);
+    color: var(--white-color);
 }
 .nav-link img {
     border-radius: 50%;
@@ -45,8 +44,7 @@
     font-size: 20px;
 }
 .navbar .navbar-brand b {
-    font-weight: bold;
-    color: var(--main-color);		
+    font-weight: bold;	
 }
 .navbar .form-inline {
     display: inline-block;
@@ -63,7 +61,7 @@
 }	
 .search-box input {
     padding-right: 35px;
-    border-color: #dfe3e8;
+    border-color: var(-white-color);
     border-radius: 4px !important;
     box-shadow: none
 }
@@ -118,11 +116,11 @@
 }
 .navbar .dropdown-menu {
     border-radius: 1px;
-    border-color: #e5e5e5;
+    border-color: var(--white-color);
     box-shadow: 0 2px 8px rgba(0,0,0,.05);
 }
 .navbar .nav .dropdown-menu li {
-    color: var(--black-color);
+    color: var(--secondary-color);
     font-weight: normal;
 }
 .navbar .nav .dropdown-menu li a, .navbar .nav .dropdown-menu li a:hover, .navbar .nav .dropdown-menu li a:focus {
@@ -221,7 +219,7 @@
         margin-left: 30px;
     }
     .dropdown-menu{
-        background: var(--lighter-color);
+        background: var(--white-color);
         margin-top: 9px;
     }
 }

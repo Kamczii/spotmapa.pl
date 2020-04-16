@@ -8,7 +8,7 @@ select{
   font-weight: bold;
   border: 1px solid var(--secondary-color);
   border-radius: 5px;
-  background: var(--main-color);
+  background: var(--secondary-color);
   color: var(--white-color);
 }
 option{
@@ -48,17 +48,17 @@ button{
   margin:2px;
 }
 .sort-button{
-  background: var(--secondary-color);
+  background: var(--main-color);
 }
 .sort-button:disabled{
   opacity:0.8;
 }
 .cancel-button{
-  background: var(--main-color);
+  background: var(--black-color);
 }
 
 .sort-info{
-  background: var(--secondary-color);
+  background: var(--main-color);
   color: white;
   font-weight: bold;
   border-radius: 5px;
