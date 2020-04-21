@@ -1,3 +1,3 @@
-export enum SORT{
-  "ASC","DESC"
+export enum SORT {
+  "ASC", "DESC"
 }

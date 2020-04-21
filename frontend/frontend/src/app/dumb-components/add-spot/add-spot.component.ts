@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Spot } from 'src/app/models/spot';
 import { SpotService } from 'src/app/services/spot.service';
 import {} from 'googlemaps';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-spot',
@@ -31,7 +32,7 @@ export class AddSpotComponent implements OnInit {
 
   maxFileSizeInBytes = 1048576;
 
-  constructor(private fb: FormBuilder, private spotService: SpotService) { }
+  constructor(private fb: FormBuilder, private spotService: SpotService, private router: Router) { }
 
   ngOnInit() {
     this.createForm();
@@ -89,40 +90,32 @@ export class AddSpotComponent implements OnInit {
         files.push(this.filesToUpload[i])
       }
     }
-    this.spotService.addPost(spot).subscribe(data => {
-      console.log(this.files.length)
-      this.spotService.addImagesToSpot(data.spot_id, files).subscribe(data => console.log("images uploaded"));
-      this.creatingForm.reset();
-      this.urls = [];
-      this.files = [];
-      this.submitted = false;
-      
-      this.addedSpot = data.name;
-      document.getElementById("popup").style.display = 'flex';
-      setTimeout(
-        function(){
-          
-      document.getElementById("popup").style.opacity = '1';
+    
+    this.spotService.addPost(spot).subscribe(added => {
 
+      if(files.length>0){
+        this.spotService.addImagesToSpot(added.spot_id, files).subscribe(data => {
+          this.afterUpdate(added.spot_id);
+        });
+      }else{
+        this.afterUpdate(added.spot_id);
+      }
       
-      setTimeout(
-        function(){
-          document.getElementById("popup").style.opacity = '0';
-          setTimeout(
-            function(){
-              document.getElementById("popup").style.display = 'none';
-            },
-            100
-          );
-        },
-        2000
-      );
-        },
-        100
-      );
     });
   }
   
+  afterUpdate(spot_id: number){
+    this.creatingForm.reset();
+        this.urls = [];
+        this.files = [];
+        this.submitted = false;
+        
+        document.getElementById("popup").style.opacity = '0';
+        document.getElementById("popup").style.display = 'none';
+
+        this.router.navigate(['/spots/'+spot_id]);
+  }
+
   createForm(){
     this.creatingForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(30)]],

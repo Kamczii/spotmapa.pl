@@ -5,18 +5,18 @@
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 html, body {
     height: 100% !important;
-    width: 100%;
     margin: 0 !important;
     padding: 0 !important;
     overflow-x: hidden;
     background-color: #100e17;
-    font-family: 'Raleway', sans-serif;
+    font-family: Lucida Grande, Helvetica Neue, Helvetica, Arial, sans-serif;
   }
 
 
   :root {
     --main-color: #5199FF; 
     --secondary-color: #eaeaeb; 
+    --third-color: #b21f66;
     --white-color: #17141d;
     --lighter-color: #f6faf0;
     --black-color: #1d2323;
@@ -43,7 +43,9 @@ h1{
   font-weight: bold;
 }
 
-
+.mat-radio-outer-circle{
+  border-color: var(--secondary-color);
+}
 .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
   
   border-color: var(--main-color);

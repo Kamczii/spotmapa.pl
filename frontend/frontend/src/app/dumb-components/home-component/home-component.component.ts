@@ -15,9 +15,9 @@ export class HomeComponentComponent implements OnInit {
   pageNumber: number = 1;
   maxSize: number = 5;
   sc: BaseSearchCriteria = new BaseSearchCriteria();
-  
+
   spots: Spot[] = [];
-  
+
   constructor(private spotService: SpotService) { }
 
   ngOnInit() {
@@ -25,19 +25,12 @@ export class HomeComponentComponent implements OnInit {
     so.fieldName = 'createdAt';
     so.orderType = 'DESC';
     this.sc.sortOrder = so;
-    this.sc.pageNumber = this.pageNumber-1;
+    this.sc.pageNumber = this.pageNumber - 1;
     this.sc.maxResults = this.maxSize;
     let that = this;
-    
+
     this.spotService.getAllPosts(this.sc).subscribe(data => {
-      let length = data.results.length;
-      for(let i=0;i<length;i++){
-        setTimeout(function(){ 
-          that.spots.push(data.results[i]); 
-          
-        console.log("log")
-        }, (100/length)*i);
-      }
+      that.spots = data.results;
     });
     // let so = new SearchOrder();
     // so.fieldName = 'createdAt';
@@ -46,16 +39,16 @@ export class HomeComponentComponent implements OnInit {
     // this.sc.pageNumber = this.pageNumber-1;
     // this.sc.maxResults = this.maxSize;
     // let that = this;
-    
+
     // this.spotService.getAllPosts(this.sc).subscribe(data => {
     //   let length = data.results.length;
     //   for(let i=0;i<length;i++){
     //     setTimeout(function(){ 
     //       that.spots.push(data.results[i]); 
-          
+
     //     console.log("log")
     //     }, (100/length)*i);
     //   }
     // });
-}
+  }
 }

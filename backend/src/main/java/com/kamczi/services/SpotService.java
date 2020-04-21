@@ -7,6 +7,7 @@ package com.kamczi.services;
 
 import com.kamczi.colletctions.PageWrapper;
 import com.kamczi.entities.Comment;
+import com.kamczi.entities.Image;
 import com.kamczi.entities.Spot;
 import com.kamczi.entities.SpotLikes;
 import com.kamczi.entities.User;
@@ -221,5 +222,19 @@ public class SpotService {
     
     public Integer getLikesSize(Long id){
          return spotRepo.findById(id).get().getLikes().size();
+    }
+    
+    public boolean checkIfUserOwnsTheImage(Image image){
+        if(userService.getCurrentUser().getUser_id()==image.getUser().getUser_id())
+            return true;
+        else 
+            return false;
+    }
+    
+    public boolean checkIfUserOwnsThePost(Long postId){
+        if(userService.getCurrentUser().getUser_id()==getPostById(postId).getUser().getUser_id())
+            return true;
+        else 
+            return false;
     }
 }

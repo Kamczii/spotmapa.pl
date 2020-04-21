@@ -1,6 +1,6 @@
 import { User } from "./user";
 
-export class Comment{
+export class Comment {
   comment_id: number;
   comment: String;
   date: Date;

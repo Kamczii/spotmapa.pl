@@ -5,3 +5,4 @@ backend/src/main/resources
 server
 frontend/frontend/node_modules
 frontend/frontend/src/environments/environment.prod.ts
+frontend/frontend/src/certs

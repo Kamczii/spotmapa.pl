@@ -17,45 +17,45 @@ export class ProfileService {
   constructor(private http: HttpClient, private auth: AuthService) { }
 
   getCurrentUserProfile(): Observable<User> {
-    return this.http.get<User>(environment.api_endpoint+'/current-user');
+    return this.http.get<User>(environment.api_endpoint + '/current-user');
   }
 
-  getUserById(id: number): Observable<User>{
-    return this.http.get<User>(environment.api_endpoint+'/public/user?id='+id);
+  getUserById(id: number): Observable<User> {
+    return this.http.get<User>(environment.api_endpoint + '/public/user?id=' + id);
   }
 
-  checkNicknameExists(nickname: String): Observable<boolean>{
+  checkNicknameExists(nickname: String): Observable<boolean> {
     return this.http.get<boolean>(environment.api_endpoint + '/public/user/nickname?nickname=' + nickname)
   }
 
-  checkEmailExists(email: String): Observable<boolean>{
+  checkEmailExists(email: String): Observable<boolean> {
     return this.http.get<boolean>(environment.api_endpoint + '/public/user/email?email=' + email)
   }
 
-  updateProfile(user: User): Observable<User>{
-    return this.http.put<User>(environment.api_endpoint+"/private/user/update", user);
+  updateProfile(user: User): Observable<User> {
+    return this.http.put<User>(environment.api_endpoint + "/private/user/update", user);
   }
 
-  checkIfUserContent(path_id: number){
+  checkIfUserContent(path_id: number) {
 
-    console.log(path_id+' '+this.auth.getUserId())
-    if(this.auth.isAuthenticated()){
-      if(path_id == this.auth.getUserId())
+    console.log(path_id + ' ' + this.auth.getUserId())
+    if (this.auth.isAuthenticated()) {
+      if (path_id == this.auth.getUserId())
         return true;
       else
         return false;
     }
   }
 
-  uploadAvatar(data: File){
+  uploadAvatar(data: File) {
     let headers = new HttpHeaders();
     headers.append("cache-control", "no-cache");
     let file = new FormData();
-    file.append('file',data);
-    return this.http.post<any>(environment.api_endpoint+'/private/image/avatar',file,{headers: headers});
+    file.append('file', data);
+    return this.http.post<any>(environment.api_endpoint + '/private/image/avatar', file, { headers: headers });
   }
 
-  deleteAvatar(){
-    return this.http.delete<any>(environment.api_endpoint+'/private/image/avatar');
+  deleteAvatar() {
+    return this.http.delete<any>(environment.api_endpoint + '/private/image/avatar');
   }
 }

@@ -9,9 +9,9 @@ import { Spot } from 'src/app/models/spot';
   styleUrls: ['./spot-preview.component.css']
 })
 export class SpotPreviewComponent implements OnInit {
-@Input()
+  @Input()
   spot: Spot;
-  
+
   constructor() { }
 
   ngOnInit() {

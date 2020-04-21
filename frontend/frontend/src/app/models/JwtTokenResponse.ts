@@ -1,3 +1,3 @@
-export class JwtTokenResponse{
+export class JwtTokenResponse {
   token: string;
 }

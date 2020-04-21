@@ -12,6 +12,7 @@ import com.kamczi.enums.SpotType;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -31,7 +32,9 @@ public class SpotModel {
     private Short security;
     private Double lng;
     private Double lat;
-    private List<String> images = new ArrayList();
+    List<MultipartFile> files;
+    
+    private List<ImageModel> images = new ArrayList();
     public SpotModel(){}
     
     public SpotModel(Spot spot){
@@ -47,11 +50,21 @@ public class SpotModel {
            this.security = spot.getSecurity();
            this.lng = spot.getLng();
            this.lat = spot.getLat();
+           
             for (Image image : spot.getImages()) {
-            this.images.add(image.getLink());
+                this.images.add(new ImageModel(image));
             }
     }
 
+    public List<MultipartFile> getFiles() {
+        return files;
+    }
+
+    public void setFiles(List<MultipartFile> files) {
+        this.files = files;
+    }
+    
+    
     public Long getId() {
         return id;
     }
@@ -148,11 +161,11 @@ public class SpotModel {
         this.lat = lat;
     }
 
-    public List<String> getImages() {
+    public List<ImageModel> getImages() {
         return images;
     }
 
-    public void setImages(List<String> images) {
+    public void setImages(List<ImageModel> images) {
         this.images = images;
     }
 

@@ -68,8 +68,8 @@ public class AuthConfig extends WebSecurityConfigurerAdapter {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.applyPermitDefaultValues();
         configuration.addExposedHeader(HEADER_STRING);
-        configuration.setAllowedMethods(Arrays.asList("*"));
-        configuration.setAllowedOrigins(Arrays.asList("*"));
+        configuration.setAllowedMethods(Arrays.asList("POST","GET","PUT","DELETE"));
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200","https://localhost:4200","https://spotmapa.pl"));
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }

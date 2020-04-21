@@ -1,21 +1,16 @@
-<div class="main-container" >
+<div class="main-container">
     <div class="sorting">
-        
-            <app-sort-post class="ldt-float-down-in" (refreshPosts)="getSpots()" [title]="title" [sc]="sc"></app-sort-post>
+
+        <app-sort-post class="ldt-float-down-in" (refreshPosts)="getSpots()" [title]="title" [sc]="sc"></app-sort-post>
     </div>
-<div class="contain">
+    <div class="contain">
 
-<div class="spot ld ldt-zoom-in" *ngFor="let spot of spots">
-        <app-spot-preview  [spot]="spot"></app-spot-preview>
-</div>
-
-
-
-
-
-</div>
-<div class="footer">
-    <app-footer></app-footer>
-</div>
+        <div class="spot ld ldt-fade-in" *ngFor="let spot of spots">
+            <app-spot-preview [spot]="spot"></app-spot-preview>
+        </div>
+    </div>
+    <div class="footer">
+        <app-footer></app-footer>
+    </div>
 
 </div>

@@ -1,36 +1,39 @@
 <table id="wrapper">
-            <tr>
-                  <td>
-                        
-            <div  (click)="goFullScreen()" (swiperight)="onSwipeRight($event)" (swipeleft)="onSwipeLeft($event)" class="image">
-                  
-                  <img  #img src="{{image}}">
-            </div>
-                  </td>
-            </tr>
+      <tr>
+            <td>
+
+                  <div (click)="goFullScreen()" (swiperight)="onSwipeRight($event)" (swipeleft)="onSwipeLeft($event)"
+                        class="image">
+
+                        <img #img src="{{image}}">
+                  </div>
+            </td>
+      </tr>
 </table>
 
 <div *ngIf="items" class="loader">
-      <div *ngFor="let i = index of items" id="{{i}}" [ngClass]="i == currentImage ? 'active':''" class="part" (click)="setImage(i)"></div>
+      <div *ngFor="let i = index of items" id="{{i}}" [ngClass]="i == currentImage ? 'active':''" class="part"
+            (click)="setImage(i)"></div>
 </div>
 
 <table *ngIf="lightboxEnabled" id="lightbox">
-            
-            <tr>
-                        <td>
-                              
-                  <div #img1 (swipedown)="closeFullScreen()" (swipeup)="closeFullScreen()" (swiperight)="onSwipeRight($event)" (swipeleft)="onSwipeLeft($event)" class="image" >
-                        
-                        <img   src="{{image}}">
+
+      <tr>
+            <td>
+
+                  <div #img1 (swipedown)="closeFullScreen()" (swipeup)="closeFullScreen()"
+                        (swiperight)="onSwipeRight($event)" (swipeleft)="onSwipeLeft($event)" class="image">
+
+                        <img src="{{image}}">
                   </div>
-                  
-                </td>
-            </tr>
-            
+
+            </td>
+      </tr>
+
 </table>
 
-                  
+
 
 <div *ngIf="lightboxEnabled" class="cross ld ldt-slide-right-in">
-            <button (click)="closeFullScreen()"><i class="fa fa-times" ></i></button>
+      <button (click)="closeFullScreen()"><i class="fa fa-times"></i></button>
 </div>

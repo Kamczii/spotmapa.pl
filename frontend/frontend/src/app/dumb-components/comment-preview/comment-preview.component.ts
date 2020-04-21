@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {Comment} from '../../models/comment';
+import { Comment } from '../../models/comment';
 
 @Component({
   selector: 'app-comment-preview',
@@ -9,7 +9,7 @@ import {Comment} from '../../models/comment';
 export class CommentPreviewComponent implements OnInit {
 
   @Input() comment: Comment;
-  
+
   constructor() { }
 
   ngOnInit() {

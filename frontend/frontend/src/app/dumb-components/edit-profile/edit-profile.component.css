@@ -1,0 +1,36 @@
+.editor-container{
+    background: var(--white-color);
+    padding: 1vw 1vw;
+    box-sizing: border-box;
+    border-radius: 1vw;
+    max-width: 400px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.submit-button{
+    background: var(--main-color);
+    border-color: var(--main-color);
+    color: var(--secondary-color);
+    width: 100%;
+    border-radius:5px;
+    padding: 10px 0;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  @media (max-width: 768px){
+  .submit-button{
+      background: var(--main-color);
+      border-color: var(--main-color);
+  }
+  }
+
+input, textarea{
+    margin:2rem 0 ;
+}
+.form-container{
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+

@@ -14,47 +14,51 @@ export class SpotComponent implements OnInit {
   spot_id: number;
   spot: Spot;
   isLiked: boolean;
+  isUserOwningPost: boolean;
 
-  @ViewChild('map',{static: false})
+  @ViewChild('map', { static: false })
   mapElement: any;
   map: google.maps.Map;
   marker: any;
 
   currentFragmet = 'info';
 
-  constructor(private auth: AuthService, private spotService: SpotService, private route: ActivatedRoute, private router: Router){
+  constructor(private auth: AuthService, private spotService: SpotService, private route: ActivatedRoute, private router: Router) {
+
     router.events.subscribe((val) => {
-      this.checkHash(); 
-  });
-   }
+      this.checkHash();
+    });
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.spot_id = params['id'];
-      this.spotService.getUserById(this.spot_id).subscribe(spot => {
+      this.spotService.getSpotById(this.spot_id).subscribe(spot => {
         this.spot = spot;
-        let clickedLocation = new google.maps.LatLng(this.spot.lat , this.spot.lng);
+        if (spot.user.user_id == this.auth.getUserId())
+          this.isUserOwningPost = true;
+        let clickedLocation = new google.maps.LatLng(this.spot.lat, this.spot.lng);
         this.marker = new google.maps.Marker({
           position: clickedLocation,
           map: this.map
-      });
-      this.checkIfSpotIsLiked();
-        const center = new google.maps.LatLng(this.spot.lat , this.spot.lng);
+        });
+        this.checkIfSpotIsLiked();
+        const center = new google.maps.LatLng(this.spot.lat, this.spot.lng);
 
         this.map.panTo(center);
       });
     });
-    
+
   }
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     const mapProperties = {
       center: new google.maps.LatLng(53.131410, 18.002468),
       zoom: 10,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
-    this.map = new google.maps.Map(this.mapElement.nativeElement,    mapProperties);
-        
+    this.map = new google.maps.Map(this.mapElement.nativeElement, mapProperties);
+
 
   }
 
@@ -71,44 +75,43 @@ export class SpotComponent implements OnInit {
     expandImg.parentElement.style.display = "block";
   }
 
-  checkHash(){
+  checkHash() {
     this.route.fragment.subscribe((fragment: string) => {
-        this.currentFragmet = fragment
+      this.currentFragmet = fragment
     })
   }
 
-  checkIfSpotIsLiked(){
-    if(!this.auth.isAuthenticated())
+  checkIfSpotIsLiked() {
+    if (!this.auth.isAuthenticated())
       return;
     this.spotService.isSpotLiked(this.spot_id).subscribe(data => this.isLiked = data);
   }
 
-  checkLikesCount(){
+  checkLikesCount() {
     this.spotService.getSpotLikes(this.spot_id).subscribe(data => this.spot.likes = data);
   }
 
-  likePost(){
-    if(!this.isAuthenticated())
-    return;
+  likePost() {
+    if (!this.isAuthenticated())
+      return;
     this.spotService.likeSpotById(this.spot_id).subscribe(data => {
-      if(data == true){
+      if (data == true) {
         this.checkIfSpotIsLiked();
         this.checkLikesCount();
       }
     })
   }
 
-  unlikePost(){
+  unlikePost() {
     this.spotService.unlikeSpotById(this.spot_id).subscribe(data => {
-      if(data == true){
+      if (data == true) {
         this.checkIfSpotIsLiked();
         this.checkLikesCount();
       }
     })
   }
 
-  isAuthenticated()
-  {
+  isAuthenticated() {
     return this.auth.isAuthenticated();
   }
 }

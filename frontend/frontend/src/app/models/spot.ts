@@ -1,7 +1,8 @@
 import { SpotType } from '../enums/spotType';
 import { User } from './user';
+import { Image } from './image';
 
-export class Spot{
+export class Spot {
     id: number;
     spotType: SpotType;
     name: string;
@@ -14,5 +15,5 @@ export class Spot{
     security: number;
     lng: number;
     lat: number;
-    images: string[];
+    images: Image[];
 }

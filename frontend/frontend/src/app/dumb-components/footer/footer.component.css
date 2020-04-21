@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Lora&display=swap');
 .footer{
-    font-family: 'Lora', serif;
     width: 100%;
     background: var(--black-color);
     color: var(--secondary-color);

@@ -9,6 +9,9 @@ import com.kamczi.colletctions.PageWrapper;
 import com.kamczi.entities.Avatar;
 import com.kamczi.entities.User;
 import com.kamczi.enums.AuthProvider;
+import com.kamczi.exceptions.EmailAlreadyExistsException;
+import com.kamczi.exceptions.EmptyEmailException;
+import com.kamczi.exceptions.EmptyUsernameException;
 import com.kamczi.exceptions.UserAlreadyExists;
 import com.kamczi.facebook.FacebookUserResponse;
 import com.kamczi.imgur.BasicImgurResponse;
@@ -111,12 +114,27 @@ public class UserService {
     public User updateUser(UserModel model){
         User user = getCurrentUser();
         
-        if(model.getUsername() == null){
-        if(isNicknameAlreadyExists((model.getUsername())))
-            throw new UserAlreadyExists((model.getUsername()));
-        else
-            user.setUsername(model.getUsername());
+        if(!model.getUsername().equals(user.getUsername())){
+            if(model.getUsername() != null){
+                if(isNicknameAlreadyExists((model.getUsername())))
+                    throw new UserAlreadyExists((model.getUsername()));
+                else
+                    user.setUsername(model.getUsername());
+            }else
+                throw new EmptyUsernameException();
         }
+        
+        System.out.println(model.getEmail() +" "+ user.getEmail());
+        if(!model.getEmail().equals(user.getEmail())){
+            if(model.getEmail() != null){
+                if(isEmailAlreadyExists((model.getEmail())))
+                    throw new EmailAlreadyExistsException((model.getEmail()));
+                else
+                    user.setEmail(model.getEmail());
+            }else
+                throw new EmptyEmailException();
+        }
+        
         user.setUpdated_at(new Date());
         user.setDescription(model.getDescription());
         return user;

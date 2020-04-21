@@ -13,7 +13,7 @@ export class InfoWindowComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.spot.images[0])
+    
   }
 
 }

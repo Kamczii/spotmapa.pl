@@ -18,14 +18,14 @@ export interface WindowScrollerOptions {
     smooth: boolean;
 }
 
-export var WINDOW_SCROLLER_OPTIONS = new InjectionToken<WindowScrollerOptions>( "WindowScroller.Options" );
+export var WINDOW_SCROLLER_OPTIONS = new InjectionToken<WindowScrollerOptions>("WindowScroller.Options");
 
 // I provide the dependency-injection token for the window-scroller so that it can be
 // more easily injected into the FragmentTarget directive. This allows other developers
 // to provide an override that implements this Type without have to deal with the silly
 // @Inject() decorator.
 export abstract class WindowScroller {
-    abstract scrollIntoView( elementRef: ElementRef ) : void;
+    abstract scrollIntoView(elementRef: ElementRef): void;
 }
 
 // I provide an implementation for scrolling a given Element Reference into view. By
@@ -37,9 +37,9 @@ export class NativeWindowScroller implements WindowScroller {
     public timer: number;
 
     // I initialize the window scroller implementation.
-    public constructor( @Inject( WINDOW_SCROLLER_OPTIONS ) options: WindowScrollerOptions ) {
+    public constructor(@Inject(WINDOW_SCROLLER_OPTIONS) options: WindowScrollerOptions) {
 
-        this.behavior = ( options.smooth ? "smooth" : "auto" );
+        this.behavior = (options.smooth ? "smooth" : "auto");
         this.timer = null;
 
     }
@@ -49,23 +49,23 @@ export class NativeWindowScroller implements WindowScroller {
     // ---
 
     // I scroll the given ElementRef into the client's viewport.
-    public scrollIntoView( elementRef: ElementRef ) : void {
+    public scrollIntoView(elementRef: ElementRef): void {
 
         // NOTE: There is an odd race-condition that I cannot figure out. The initial
         // scrollToView() will not work when the BROWSER IS REFRESHED. It will work if
         // the page is opened in a new tab; it only fails on refresh (WAT?!). To fix this
         // peculiarity, I'm putting the first scroll operation behind a timer. The rest
         // of the scroll operations will initiate synchronously.
-        if ( this.timer ) {
+        if (this.timer) {
 
-            this.doScroll( elementRef );
+            this.doScroll(elementRef);
 
         } else {
 
             setTimeout(
-                () : void => {
+                (): void => {
 
-                    this.doScroll( elementRef );
+                    this.doScroll(elementRef);
 
                 },
                 this.timer
@@ -80,7 +80,7 @@ export class NativeWindowScroller implements WindowScroller {
     // ---
 
     // I perform the scrolling of the viewport.
-    private doScroll( elementRef: ElementRef ) : void {
+    private doScroll(elementRef: ElementRef): void {
 
         elementRef.nativeElement.scrollIntoView({
             behavior: this.behavior,
@@ -96,7 +96,7 @@ export class NativeWindowScroller implements WindowScroller {
 
 @Directive({
     selector: "[id], a[name]",
-    inputs: [ "id", "name" ]
+    inputs: ["id", "name"]
 })
 export class FragmentTargetDirective implements OnInit, OnDestroy {
 
@@ -113,7 +113,7 @@ export class FragmentTargetDirective implements OnInit, OnDestroy {
         activatedRoute: ActivatedRoute,
         elementRef: ElementRef,
         windowScroller: WindowScroller
-        ) {
+    ) {
 
         this.activatedRoute = activatedRoute;
         this.elementRef = elementRef;
@@ -130,35 +130,35 @@ export class FragmentTargetDirective implements OnInit, OnDestroy {
     // ---
 
     // I get called once when the directive is being destroyed.
-    public ngOnDestroy() : void {
+    public ngOnDestroy(): void {
 
-        ( this.fragmentSubscription ) && this.fragmentSubscription.unsubscribe();
+        (this.fragmentSubscription) && this.fragmentSubscription.unsubscribe();
 
     }
 
 
     // I get called once after the inputs have been bound for the first time.
-    public ngOnInit() : void {
+    public ngOnInit(): void {
 
         this.fragmentSubscription = this.activatedRoute.fragment.subscribe(
-            ( fragment: string ) : void => {
+            (fragment: string): void => {
 
-                if ( ! fragment ) {
+                if (!fragment) {
 
                     return;
 
                 }
 
                 if (
-                    ( fragment !== this.id ) &&
-                    ( fragment !== this.name )
-                    ) {
+                    (fragment !== this.id) &&
+                    (fragment !== this.name)
+                ) {
 
                     return;
 
                 }
 
-                this.windowScroller.scrollIntoView( this.elementRef );
+                this.windowScroller.scrollIntoView(this.elementRef);
 
             }
         );
@@ -184,15 +184,15 @@ interface ModuleOptions {
 })
 export class FragmentPolyfillModule {
 
-    static forRoot( options?: ModuleOptions ) : ModuleWithProviders {
+    static forRoot(options?: ModuleOptions): ModuleWithProviders {
 
-        return({
+        return ({
             ngModule: FragmentPolyfillModule,
             providers: [
                 {
                     provide: WINDOW_SCROLLER_OPTIONS,
                     useValue: {
-                        smooth: ( ( options && options.smooth ) || false )
+                        smooth: ((options && options.smooth) || false)
                     }
                 },
                 {

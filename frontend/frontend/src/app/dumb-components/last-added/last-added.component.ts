@@ -16,36 +16,31 @@ export class LastAddedComponent implements OnInit {
   sc: BaseSearchCriteria = new BaseSearchCriteria();
   title: String = "Spoty";
   spots: Spot[] = [];
-  
+
   finished = false;
 
   constructor(private spotService: SpotService) { }
 
   ngOnInit() {
-    
+
     let so = new SearchOrder();
     so.fieldName = 'createdAt';
     so.orderType = 'DESC';
     this.sc.sortOrder = so;
-    this.sc.pageNumber = this.pageNumber-1;
+    this.sc.pageNumber = this.pageNumber - 1;
     this.sc.maxResults = this.maxSize;
 
     this.getSpots();
   }
 
-  getSpots(){
+  getSpots() {
     let that = this;
     this.spots = [];
     this.spotService.getAllPosts(this.sc).subscribe(data => {
-      let length = data.results.length;
-      for(let i=0;i<length;i++){
-        setTimeout(function(){ 
-          that.spots.push(data.results[i]); 
-          
-        }, (100/length)*i);
-      }
+          that.spots = data.results;
+      
     });
   }
-  
+
 
 }

@@ -8,9 +8,9 @@ describe('LastAddedComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LastAddedComponent ]
+      declarations: [LastAddedComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

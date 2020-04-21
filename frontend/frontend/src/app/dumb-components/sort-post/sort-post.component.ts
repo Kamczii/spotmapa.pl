@@ -24,7 +24,7 @@ export class SortPostComponent implements OnInit {
   actualSortType: string;
 
   sortingForm = new FormGroup({
-    fieldName: new FormControl('',Validators.required),
+    fieldName: new FormControl('', Validators.required),
     sortType: new FormControl('', Validators.required)
   })
 
@@ -33,7 +33,7 @@ export class SortPostComponent implements OnInit {
   ngOnInit() {
   }
 
-  sort(){
+  sort() {
     this.isSorting = true;
     let so = new SearchOrder();
     so.fieldName = this.postFields[this.sortingForm.controls['fieldName'].value].key;
@@ -46,19 +46,19 @@ export class SortPostComponent implements OnInit {
     this.getPosts();
   }
 
-  unSort(){
+  unSort() {
     this.isSorting = false;
     this.actualSortField = null;
     this.actualSortType = null;
 
     this.sc.sortOrder = null;
 
-    this.sortingForm.reset({fieldName: this.postFields[0].value, sortType: this.sortTypes[0].value});
+    this.sortingForm.reset({ fieldName: this.postFields[0].value, sortType: this.sortTypes[0].value });
 
     this.getPosts();
   }
 
-  getPosts(){
+  getPosts() {
     this.refreshPosts.emit('');
   }
 }

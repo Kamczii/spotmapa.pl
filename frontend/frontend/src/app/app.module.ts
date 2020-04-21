@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegisterFormComponent } from './dumb-components/register-form/register-form.component';
 import { FormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { LoginFormComponent } from './dumb-components/login-form/login-form.component';
 import { SpotMapComponent } from './dumb-components/spot-map/spot-map.component';
 import { NotFoundComponent } from './dumb-components/not-found/not-found.component';
@@ -18,8 +18,8 @@ import { SpotComponent } from './dumb-components/spot/spot.component';
 import { GalleryModule } from '@ngx-gallery/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import { LightboxModule } from  '@ngx-gallery/lightbox';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { LightboxModule } from '@ngx-gallery/lightbox';
 import { GalleryComponent } from './dumb-components/gallery/gallery.component';
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 import { FragmentPolyfillModule } from './fragmet.module';
@@ -28,23 +28,31 @@ import { CommentPreviewComponent } from './dumb-components/comment-preview/comme
 import { CommentListComponent } from './dumb-components/comment-list/comment-list.component';
 import { SpotPreviewComponent } from './dumb-components/spot-preview/spot-preview.component';
 import { FooterComponent } from './dumb-components/footer/footer.component';
-import {MatRadioModule} from '@angular/material/radio';
+import { MatRadioModule } from '@angular/material/radio';
 import { LastAddedComponent } from './dumb-components/last-added/last-added.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { TruncatePipe } from './pipes/TruncatePipe';
 import { PhotoGalleryComponent } from './dumb-components/photo-gallery/photo-gallery.component';
 import { SortPostComponent } from './dumb-components/sort-post/sort-post.component';
+import { UpdateSpotComponent } from './dumb-components/update-spot/update-spot.component';
+import { SpotContainerComponent } from './dumb-components/spot-container/spot-container.component';
+import { EditSpotComponent } from './dumb-components/edit-spot/edit-spot.component';
+import { ProfileInfoComponent } from './dumb-components/profile-info/profile-info.component';
+import { EditProfileComponent } from './dumb-components/edit-profile/edit-profile.component';
+import { EditAvatarComponent } from './dumb-components/edit-avatar/edit-avatar.component';
+import { ProfileComponentsContainerComponent } from './dumb-components/profile-components-container/profile-components-container.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
 }
 
-export class MyHammerConfig extends HammerGestureConfig  {
+export class MyHammerConfig extends HammerGestureConfig {
   buildHammer(element: HTMLElement) {
     let mc = new Hammer(element, {
       //touchAction: "auto",
-      
+
     });
     return mc;
   }
@@ -72,7 +80,14 @@ export class MyHammerConfig extends HammerGestureConfig  {
     LoadingSpinnerComponent,
     TruncatePipe,
     PhotoGalleryComponent,
-    SortPostComponent
+    SortPostComponent,
+    UpdateSpotComponent,
+    SpotContainerComponent,
+    EditSpotComponent,
+    ProfileInfoComponent,
+    EditProfileComponent,
+    EditAvatarComponent,
+    ProfileComponentsContainerComponent
   ],
   imports: [
     BrowserModule,
@@ -81,7 +96,7 @@ export class MyHammerConfig extends HammerGestureConfig  {
     AppRoutingModule,
     FragmentPolyfillModule.forRoot({
       smooth: true
-  }),
+    }),
     ReactiveFormsModule,
     NoopAnimationsModule,
     FormsModule,
@@ -91,10 +106,11 @@ export class MyHammerConfig extends HammerGestureConfig  {
     Ng2CarouselamosModule,
     LightboxModule,
     MatRadioModule,
+    ImageCropperModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        whitelistedDomains: ['localhost:8080','192.168.1.2:8080','s41.mydevil.net:38501','spotmapa.pl','localhost:8443']
+        whitelistedDomains: ['localhost:8080', '192.168.1.2:8080', 's41.mydevil.net:38501', 'spotmapa.pl', 'kamil123.usermd.net', 'localhost:8443']
       }
     })
   ],
@@ -102,7 +118,7 @@ export class MyHammerConfig extends HammerGestureConfig  {
     {
       provide: HAMMER_GESTURE_CONFIG,
       useClass: MyHammerConfig
-  },
+    },
   ],
   entryComponents: [
     InfoWindowComponent

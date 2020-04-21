@@ -5,6 +5,7 @@
  */
 package com.kamczi.models;
 
+import com.kamczi.entities.Image;
 import com.kamczi.entities.User;
 
 /**
@@ -18,7 +19,12 @@ public class ImageModel {
         
         public ImageModel() {
         }
-
+        
+        public ImageModel(Image image){
+            this.id = image.getImgurId();
+            this.deletehash = image.getDeletehash();
+            this.link = image.getLink();
+        }
         public String getId() {
             return id;
         }

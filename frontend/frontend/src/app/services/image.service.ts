@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,17 +9,13 @@ import { environment } from 'src/environments/environment';
 export class ImageService {
 
   constructor(private http: HttpClient) { }
-  
-  uploadImages(data: File[]){
+
+  uploadAvatar(data: File): Observable<any> {
     let headers = new HttpHeaders();
     headers.append("cache-control", "no-cache");
     let file = new FormData();
-    let i=1;
-    for(let img in data){
-      file.append('file'+i,img);
-      i++;
-    }
-    return this.http.post<any>(environment.api_endpoint+'/private/image/avatar',file,{headers: headers});
+      file.append('file', data);
+    return this.http.post(environment.api_endpoint + '/private/image/avatar', file, { headers: headers });
   }
 
 }

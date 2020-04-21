@@ -1,35 +1,36 @@
+<div class="wrapper">
+        <a [routerLink]="['/spots',spot.id]">
 
-        <div class="wrapper">
-                <a  [routerLink]="['/spots',spot.id]">
-        
 
-                        <div class="header-photo" *ngIf="spot">
-                                <img class="images" *ngIf="spot.images[0]" alt="" src="{{spot.images[0]}}">
-                                <img class="no-images" *ngIf="!spot.images[0]" src="../../../assets/no-images.png">
-                        </div>  
+                <div class="header-photo" *ngIf="spot">
+                        <img class="images" *ngIf="spot.images[0]" alt="" src="{{spot.images[0].link}}">
+                        <img class="no-images" *ngIf="!spot.images[0]" src="../../../assets/no-images.png">
+                </div>
 
-        <div *ngIf="spot" class="section"  id="info">
-                <div class="row header">
-                        <div class="col-md-8 col-12">
-                                <p class="type"><a href="#">{{spot.created_at | date: 'dd.MM.yyyy'}}</a>  
-                                </p>
+                <div *ngIf="spot" class="section" id="info">
+                        <div class="row header">
+                                <div class="col-md-8 col-12">
+                                        <p class="type"><a href="#">{{spot.created_at | date: 'dd.MM.yyyy'}}</a>
+                                        </p>
+                                </div>
+                                <div class="col-md-8 col-12">
+                                        <p class="type"><a href="#">{{spot.spotType}}</a>
+                                        </p>
+                                </div>
+                                <div class="col-md-8 col-8">
+                                        <div class="name">{{spot.name}}</div>
+                                </div>
+                                <div class="col-md-4 col-4 text-right">
+                                        <span class="unlike"><img src="../../../assets/icons/unlike.png">
+                                                {{spot.likes}}</span>
+                                </div>
                         </div>
-                        <div class="col-md-8 col-12">
-                                <p class="type"><a href="#">{{spot.spotType}}</a>  
-                                </p>
-                        </div>
-                        <div class="col-md-8 col-8">
-                                <div class="name">{{spot.name}}</div>
-                        </div>
-                        <div class="col-md-4 col-4 text-right">
-                                                <span class="unlike"><img src="../../../assets/icons/unlike.png"> {{spot.likes}}</span>
-                        </div>
-                </div> 
-                  
-            
-                <p class="colored-text" class="profile"><img src="{{spot.user.avatar.link}}" ><a>{{spot.user.username}}</a></p>
-                
-        </div>
-</a>
-                
+
+
+                        <p class="colored-text" class="profile"><img
+                                        src="{{spot.user.avatar.link}}"><a>{{spot.user.username}}</a></p>
+
+                </div>
+        </a>
+
 </div>

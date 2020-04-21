@@ -1,7 +1,6 @@
 
 .wrapper{
   font-size: 120%;
-  margin-top: 57px;
   color: var(--secondary-color);
   background: var(--white-color);
   box-shadow: -1rem 0 3rem #000;
@@ -10,7 +9,6 @@ h1{
   text-overflow: ellipsis;
 }
 p{
-  margin: 0 0 15px 15px;
   padding: 0;
 }
 
@@ -54,25 +52,22 @@ img{
   text-align: center;
 }
 
-.section{
- 
+.likes-count
+{
+  margin-right: 5px;
 }
-
 a{
   color:  var(--main-color);
 }
 
 .like , .unlike{
-  position: relative;
-  bottom: -8px;
-  font-size: 30px;
+  font-size: 44px;
   padding: 0;
   margin: 0;
-  margin-right: 15px;
 }
 .like img, .unlike img{
   position: relative;
-  bottom: 6px;
+  bottom: 2px;
   width: 30px;
   height: 30px;
   -webkit-transition:  .3s; /* For Safari 3.1 to 6.0 */
@@ -97,10 +92,8 @@ a.anchor {
   visibility: hidden;
 }
 
-.col-md-6{
-  padding: 0;
-}
-.col-12 .section{
+
+.section{
   padding: 25px;
 }
 
@@ -114,9 +107,6 @@ a.anchor {
   width: 64px;
   margin: 43px;
 } 
-img{
-  max-width: 100%;
-}
 .header-photo{
   text-align: center;
 }

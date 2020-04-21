@@ -6,10 +6,10 @@
           <legend><span class="number">1</span>Szczegóły</legend>
 
           <div class="row">
-              <div class="col-sm-12 col-md-4">
+              <div class="col-sm-12 col-md-6">
                 <input class="form-input" type="text" formControlName="name" placeholder="Nazwa">
               </div>
-              <div class="col-sm-12 col-md-8 error">
+              <div class="col-sm-12 col-md-6 error">
                   <div *ngIf="submitted" class="ld loading-animation 
                   ldt-float-down-in">
                         <input *ngIf="submitted && f.name.hasError('required')" type="text" value="Nazwa wymagana" disabled>
@@ -65,11 +65,11 @@
             <legend><span class="number">3</span>Opis</legend>
 
             <div class="row">
-                <div class="col-sm-12 col-md-6">
+                <div class="col-sm-12 col-lg-12 col-xl-7">
   
                     <textarea class="form-input" type="text" formControlName="description" placeholder=""></textarea>
                 </div>
-                <div class="col-sm-12 col-md-6">
+                <div class="col-sm-12 col-lg-12 col-xl-5">
                         <div *ngIf="submitted" class="ld loading-animation 
                         ldt-float-down-in">
                         <input *ngIf="submitted && f.description.hasError('required')" type="text" value="Opis wymagany" disabled>
@@ -84,7 +84,7 @@
             <legend><span class="number">4</span>Zdjęcia</legend>
             <div *ngFor='let url of urls; let i = index' class="image-to-upload">
               <img *ngIf='url'  [src]="url" height="200">
-              <div *ngIf='url' (click)="remove(i)"><i class="fa fa-times"></i></div>
+              <button *ngIf='url' (click)="remove(i)"><i class="fa fa-times"></i></button>
             </div>
             <br>
             <label for="file-upload" class="custom-file-upload">
@@ -99,11 +99,8 @@
         </div>
     </form>
   </div>
-  
   <div id="popup">
     <div class="popup">
-      {{addedSpot}}<br> dodano!
+      <div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     </div>
   </div>
-
-  <app-footer></app-footer>

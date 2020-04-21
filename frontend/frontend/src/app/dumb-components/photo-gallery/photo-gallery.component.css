@@ -17,7 +17,8 @@
 }
 
 #lightbox img{
-    max-width: 100%;
+    max-width:90%;
+    max-height: 90vh;
 }
 #lightbox td{
     vertical-align: middle;
@@ -26,8 +27,8 @@
 
 .cross{
     position: fixed;
-    top:15px;
-    right: 15px;
+    top:1vw;
+    right: 1vw;
     color: white;
     font-size: 38px;
     z-index: 100;
@@ -35,12 +36,14 @@
 .cross button{
   text-shadow: 0px 0px 8px rgba(0, 0, 0, 1);
     background: none;
-    color: var(--white-color);
+  opacity: .5;
+    color: var(--main-color);
     border: none;
     transition: all .3s ease-in-out;
     outline:none;
 }
 .cross button:hover{
+  opacity: 1;
   color: var(--main-color);
   transform: scale(1.1);
   transform: rotate(180deg);
@@ -57,28 +60,29 @@
   background: none;
   border: none;
   display: block;
-  color: var(--white-color);
+  color: var(--main-color);
   outline:none;
+  opacity: .5;
   padding: 0;
   display: inline-block;
   transition: all .3s ease-in-out;
 }
 .right-arrow button:hover, .left-arrow button:hover{
+  opacity: 1;
   color: var(--main-color);
-  transform: scale(1.1);
 }
 .right-arrow{
-  right: 5px;
+  right:1vw;
 }
 .left-arrow{
-  left: 5px;
+  left: 1vw;
 }
 .demo-gallery > ul > li {
     float: left;
     width: 100%;
 }
 .demo-gallery > ul > li a { 
-    border: 5px solid var(--secondary-color);
+    border: 5px solid var(--black-color);
   border-radius: 3px;
   display: block;
   overflow: hidden;

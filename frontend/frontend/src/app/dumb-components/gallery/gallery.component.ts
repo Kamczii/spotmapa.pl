@@ -5,7 +5,7 @@ import { transition, animate, keyframes, trigger, state, style } from '@angular/
   selector: 'app-gallery',
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.css'],
-  
+
 })
 export class GalleryComponent implements OnInit {
 
@@ -18,7 +18,7 @@ export class GalleryComponent implements OnInit {
   lightboxEnabled = false;
 
   imageRef;
-  
+
   constructor() {
   }
 
@@ -26,38 +26,38 @@ export class GalleryComponent implements OnInit {
     this.image = this.items[this.currentImage];
   }
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
 
     var myElement = document.getElementById('img');
-    if(myElement)
-    var mc = new Hammer(myElement);
+    if (myElement)
+      var mc = new Hammer(myElement);
 
   }
 
 
-  onSwipeRight(event){
-    if(this.currentImage>0)
-      this.currentImage --;
+  onSwipeRight(event) {
+    if (this.currentImage > 0)
+      this.currentImage--;
     event.target.src = this.items[this.currentImage];
   }
 
-  onSwipeLeft(event){
-    if(this.currentImage<this.items.length-1)
-      this.currentImage ++;
+  onSwipeLeft(event) {
+    if (this.currentImage < this.items.length - 1)
+      this.currentImage++;
     event.target.src = this.items[this.currentImage];
   }
 
-  goFullScreen(){
+  goFullScreen() {
     this.lightboxEnabled = true;
   }
 
-  closeFullScreen(){
+  closeFullScreen() {
     this.lightboxEnabled = false;
     console.log("close")
   }
 
-  setImage(i){
-    this.currentImage=i;
+  setImage(i) {
+    this.currentImage = i;
     this.image = this.items[this.currentImage]
   }
 }

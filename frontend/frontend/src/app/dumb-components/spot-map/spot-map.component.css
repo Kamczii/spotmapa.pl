@@ -5,14 +5,12 @@
       background: white;
   }
   #legend {
-    font-family: Arial, sans-serif;
     background: var(--white-color);
     padding: 5px 10px;
     margin: 5px;
     border: 1px solid var(--secondary-color);
     border-radius: 5px;
     color: var(--secondary-color);
-    font-family: 'Lora', serif;
   }
   #legend h3 {
     margin-top: 0;

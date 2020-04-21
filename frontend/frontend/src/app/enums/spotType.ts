@@ -1,3 +1,3 @@
 export enum SpotType {
-    SKATEPARK="Skatepark",SPOT="Spot"
-  }
+  SKATEPARK = "Skatepark", SPOT = "Spot"
+}

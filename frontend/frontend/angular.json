@@ -21,7 +21,6 @@
             "aot": false,
             "assets": [
               "src/assets",
-              
               "src/favicon.ico"
             ],
             "styles": [
@@ -66,7 +65,9 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "frontend:build"
+            "browserTarget": "frontend:build",
+            "sslKey": "./src/certs/cert.key",
+            "sslCert": "./src/certs/cert.pem"
           },
           "configurations": {
             "production": {
@@ -123,6 +124,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "frontend"
 }

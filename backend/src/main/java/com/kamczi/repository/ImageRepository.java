@@ -13,6 +13,8 @@ import org.springframework.data.repository.CrudRepository;
  *
  * @author Kamil
  */
-public interface ImageRepository extends CrudRepository<Image, String>{
-    
+public interface ImageRepository extends CrudRepository<Image, Long>{
+    Image findByDeletehash(String deletehash);
+    Image findByImgurId(String imgurid);
+     void deleteByDeletehash(String deletehash);
 }

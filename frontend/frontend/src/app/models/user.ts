@@ -11,7 +11,8 @@ export class User {
   role: ROLE;
   avatar_url: String;
   avatar: Avatar;
+  user_id: number;
 }
- class Avatar{
-    link: string;
- }
+class Avatar {
+  link: string;
+}

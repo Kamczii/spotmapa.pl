@@ -1,0 +1,35 @@
+
+.profile{
+    color: var(--secondary-color);
+    text-align: center;
+    background: var(--white-color);
+    width: 100%;
+    padding: 20px 10px;
+    border-radius: 5px;
+    box-shadow: -1rem 0 3rem #000;
+}
+.profile p{
+    margin-bottom: 0px;
+}
+.profile p:nth-of-type(1){
+    margin-bottom: 12px;
+}
+.profile img{
+    width: 100%;
+    max-width: 250px;
+    border-radius: 5px;
+}
+.spots{
+    align-content: center;
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: center;
+}
+.spot{
+    margin-bottom: 15px;
+}
+.detail-info{
+    text-align: left;
+}

@@ -35,18 +35,20 @@ public class Image {
     private User user;
     
     @JsonIgnore
-    private String imgur_id;
+    private String imgurId;
     @JsonIgnore
     private String deletehash;
     private String link;
 
-    public String getImgur_id() {
-        return imgur_id;
+    public String getImgurId() {
+        return imgurId;
     }
 
-    public void setImgur_id(String imgur_id) {
-        this.imgur_id = imgur_id;
+    public void setImgurId(String imgurId) {
+        this.imgurId = imgurId;
     }
+
+    
 
     public String getDeletehash() {
         return deletehash;

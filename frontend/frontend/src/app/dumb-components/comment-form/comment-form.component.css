@@ -1,6 +1,6 @@
 .comment-input{
     padding: 10px;
-    background: var(--main-color);
+    background:#100E17 ;
     border-radius: 5px;
   }
   
@@ -23,7 +23,7 @@
     border-radius: 5px;
     padding: 5px;
     font-size: 110%;
-    background: var(--white-color);
+    background: var(--main-color);
     color: white;
   }
 

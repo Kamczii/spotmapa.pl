@@ -1,39 +1,39 @@
 <div class="demo-gallery">
     <ul id="lightgallery" class="list-unstyled row">
 
-        <li *ngFor="let img of images; let i = index" class="col-12 col-md-4">
+        <li *ngFor="let img of images; let i = index" class="col-12 col-md-4 col-xl-3">
             <a (click)="goFullScreen(i)">
-                <img class="img-responsive" src="{{img}}">
+                <img class="img-responsive" src="{{img.link}}">
             </a>
         </li>
     </ul>
 </div>
 
-<table *ngIf="lightboxEnabled" id="lightbox" >
-            
-        <tr>
-                    <td>
-                          
-              <div  (swipedown)="closeFullScreen()" (swipeup)="closeFullScreen()" (swipeleft)="onSwipeLeft()"
-              (swiperight)="onSwipeRight()" class="full-screen">
-                    <img   #img class="ld ldt-power-on" src="{{image}}">
-              </div>
-              
-            </td>
-        </tr>
-        
+<table *ngIf="lightboxEnabled" id="lightbox">
+
+    <tr>
+        <td>
+
+            <div (swipedown)="closeFullScreen()" (swipeup)="closeFullScreen()" (swipeleft)="onSwipeLeft()"
+                (swiperight)="onSwipeRight()" class="full-screen">
+                <img #img class="ld ldt-power-on" src="{{image.link}}">
+            </div>
+
+        </td>
+    </tr>
+
 </table>
 
-              
+
 
 <div *ngIf="lightboxEnabled" class="cross ld ldt-slide-right-in">
-        <button (click)="closeFullScreen()"><i class="fa fa-times" ></i></button>
+    <button (click)="closeFullScreen()"><i class="fa fa-times"></i></button>
 </div>
 
 <div *ngIf="lightboxEnabled && currentImage<images.length-1" class="right-arrow ld ldt-slide-right-in">
-        <button (click)="SwipeRight()" ><i class="fa fa-chevron-circle-right"></i></button>
+    <button (click)="SwipeRight()"><i class="fa fa-chevron-circle-right"></i></button>
 </div>
 
 <div *ngIf="lightboxEnabled && currentImage>0" class="left-arrow ld ldt-slide-left-in">
-        <button (click)="SwipeLeft()"><i class="fa fa-chevron-circle-left"></i></button>
+    <button (click)="SwipeLeft()"><i class="fa fa-chevron-circle-left"></i></button>
 </div>
