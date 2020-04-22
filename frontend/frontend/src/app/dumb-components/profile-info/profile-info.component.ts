@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { SpotService } from 'src/app/services/spot.service';
 import { Spot } from 'src/app/models/spot';
 import { AuthService } from 'src/app/services/auth.service';
+import { PageWrapper } from 'src/app/models/page';
 
 @Component({
   selector: 'app-profile-info',
@@ -14,7 +15,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class ProfileInfoComponent implements OnInit {
 
   user: User;
-  spots: Spot[] = [];
+  spots: PageWrapper<Spot>;
   spotsCount: number;
 
   isUserOwningProfile: boolean = false;
@@ -25,12 +26,16 @@ export class ProfileInfoComponent implements OnInit {
 
     this.route.params.subscribe(params => {
       const id = params['id'];
-      if(id == this.authService.getUserId())
+      if (id == this.authService.getUserId())
         this.isUserOwningProfile = true;
       this.profileService.getUserById(id).subscribe(data => this.user = data);
-      this.spotService.getSpotsByUserId(id).subscribe(data => {this.spots = data.results; this.spotsCount = data.rows;});
+      this.getSpots();
     });
 
+  }
+
+  getSpots() {
+    this.spotService.getSpotsByUserId(this.user.id).subscribe(data => { this.spots = data });
   }
 
 }

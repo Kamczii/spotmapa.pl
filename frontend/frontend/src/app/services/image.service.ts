@@ -14,7 +14,7 @@ export class ImageService {
     let headers = new HttpHeaders();
     headers.append("cache-control", "no-cache");
     let file = new FormData();
-      file.append('file', data);
+    file.append('file', data);
     return this.http.post(environment.api_endpoint + '/private/image/avatar', file, { headers: headers });
   }
 

@@ -30,7 +30,7 @@
 		<ul *ngIf="auth.isAuthenticated()" class="nav navbar-nav navbar-right ml-auto">
 			<li *ngIf="profile" class="nav-item">
 				<a class="nav-link" [routerLink]="['/profile',profile.id]">
-					<img src="{{profile.avatar_url}}"/> {{profile.username}}</a>
+					<img src="{{profile.avatar_url}}" /> {{profile.username}}</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" (click)="auth.logout()">Wyloguj</a>

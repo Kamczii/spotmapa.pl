@@ -15,6 +15,7 @@ export class SortPostComponent implements OnInit {
 
   @Input() title: String;
   @Input() sc: BaseSearchCriteria = new BaseSearchCriteria();
+
   @Output() refreshPosts = new EventEmitter();
   postFields = SpotFields;
   sortTypes = SortTypes;

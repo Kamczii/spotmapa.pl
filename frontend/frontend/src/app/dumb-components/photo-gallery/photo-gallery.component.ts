@@ -10,7 +10,7 @@ export class PhotoGalleryComponent implements AfterViewInit, OnInit {
   @Input()
   images;
 
-  lightboxEnabled = true;
+  lightboxEnabled = false;
   currentImage = 0;
   image = '';
 

@@ -21,14 +21,14 @@ export class EditProfileComponent implements OnInit {
   constructor(private auth: AuthService, private fb: FormBuilder, private profileService: ProfileService, private router: Router) { }
 
   ngOnInit() {
-    
+
     this.createForm();
     this.profileService.getCurrentUserProfile().subscribe(data => {
       this.profile = data;
-      
-    this.profileForm.controls['email'].setValue(this.profile.email);
-    this.profileForm.controls['description'].setValue(this.profile.description);
-    //this.profileForm.controls['username'].setValue(this.profile.username);
+
+      this.profileForm.controls['email'].setValue(this.profile.email);
+      this.profileForm.controls['description'].setValue(this.profile.description);
+      //this.profileForm.controls['username'].setValue(this.profile.username);
     });
   }
 
@@ -48,7 +48,7 @@ export class EditProfileComponent implements OnInit {
 
     this.profileService.updateProfile(this.profile).subscribe(data => {
       this.auth.refreshAccessToken();
-      this.router.navigate(['/profile/'+this.profile.id]);
+      this.router.navigate(['/profile/' + this.profile.id]);
     });
   }
 

@@ -4,12 +4,12 @@
     </div>
     <div class="col-xl-4 ">
         <div class=" editor-container">
-            
+
             <app-edit-avatar></app-edit-avatar>
-        <div class="form-container">
-            <form [formGroup]="profileForm">
-            
-                <!-- <div class="form-group">
+            <div class="form-container">
+                <form [formGroup]="profileForm">
+
+                    <!-- <div class="form-group">
                     <input type="text" class="form-control" placeholder="Nazwa użytkownika" required="required"
                         formControlName="username" (keyup)="checkNickname($event)">
                 </div>
@@ -22,37 +22,36 @@
                 <div *ngIf="nicknameExist" class="form-group error">
                     <i class="fa fa-times"></i> Nazwa istnieje
                 </div> -->
-        
-                <div class="form-group">
-                    <input type="email" class="form-control" placeholder="E-mail" required="required" formControlName="email"
-                        (keyup)="checkEmail($event)">
-                </div>
-                <div *ngIf="profileForm.controls['email'].hasError('required')" class="form-group error">
-                    <i class="fa fa-times"></i> E-mail wymagany
-                </div>
-                <div *ngIf="emailExist" class="form-group error">
-                    <i class="fa fa-times"></i> E-mail istnieje
-                </div>
-                <div *ngIf="profileForm.controls['email'].hasError('email')" class="form-group error">
-                    <i class="fa fa-times"></i> To nie jest adres e-mail
-                </div>
-    
-                <div class="form-group">
-                    <textarea class="form-control" placeholder="Opis" formControlName="description"></textarea>
-                </div>
-                <div *ngIf="profileForm.controls['description'].hasError('maxlength')" class="form-group error">
-                    <i class="fa fa-times"></i> Maksymalna długość to 400
-                </div>
-                <input type="submit" class="btn submit-button btn-block" value="Zmień" (click)="register()">
-            </form>
-        </div>
-        </div>
-        
 
-        
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="E-mail" required="required"
+                            formControlName="email" (keyup)="checkEmail($event)">
+                    </div>
+                    <div *ngIf="profileForm.controls['email'].hasError('required')" class="form-group error">
+                        <i class="fa fa-times"></i> E-mail wymagany
+                    </div>
+                    <div *ngIf="emailExist" class="form-group error">
+                        <i class="fa fa-times"></i> E-mail istnieje
+                    </div>
+                    <div *ngIf="profileForm.controls['email'].hasError('email')" class="form-group error">
+                        <i class="fa fa-times"></i> To nie jest adres e-mail
+                    </div>
+
+                    <div class="form-group">
+                        <textarea class="form-control" placeholder="Opis" formControlName="description"></textarea>
+                    </div>
+                    <div *ngIf="profileForm.controls['description'].hasError('maxlength')" class="form-group error">
+                        <i class="fa fa-times"></i> Maksymalna długość to 400
+                    </div>
+                    <input type="submit" class="btn submit-button btn-block" value="Zmień" (click)="register()">
+                </form>
+            </div>
+        </div>
+
+
+
     </div>
     <div class="col-xl-4">
-        
+
     </div>
 </div>
-

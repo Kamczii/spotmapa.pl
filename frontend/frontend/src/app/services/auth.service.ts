@@ -69,7 +69,7 @@ export class AuthService {
   }
 
   getDecodedAccessToken(token: string): any {
-    
+
     try {
       return jwt_decode(token);
     }

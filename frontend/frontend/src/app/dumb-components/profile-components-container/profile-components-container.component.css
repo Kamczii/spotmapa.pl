@@ -1,3 +1,9 @@
 .profile-container{
     margin-top: 114px;
+    min-height: calc(100vh -  114px);
 }
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+   }

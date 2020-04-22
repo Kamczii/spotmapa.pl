@@ -40,9 +40,10 @@ export class SpotService {
   updatePost(spot: Spot, id: number): Observable<any> {
     return this.http.put<any>(environment.api_endpoint + "/private/spot/" + id, spot);
   }
-  
+
   addImagesToSpot(id: number, images: File[]) {
     let headers = new HttpHeaders();
+    console.log(images)
     headers.append("cache-control", "no-cache");
     let file = new FormData();
     for (let image of images) {
@@ -52,7 +53,7 @@ export class SpotService {
   }
 
   deleteImageFromSpotByDeletehash(id: number, imgur_id: string): Observable<any> {
-    return this.http.delete<boolean>(environment.api_endpoint + '/private/spot/' + id + '/images/'+imgur_id);
+    return this.http.delete<boolean>(environment.api_endpoint + '/private/spot/' + id + '/images/' + imgur_id);
   }
 
   likeSpotById(id: number): Observable<boolean> {

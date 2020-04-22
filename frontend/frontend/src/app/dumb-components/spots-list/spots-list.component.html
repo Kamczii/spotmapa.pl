@@ -1,0 +1,23 @@
+<div class="sort-wrapper">
+    <div *ngIf="showSorting" class="sorting">
+
+        <app-sort-post class="ldt-float-down-in" (refreshPosts)="getSpots()" [title]="title" [sc]="sc"></app-sort-post>
+    </div>
+
+    <div *ngIf="spots" class="contain">
+
+        <div class="spot ld ldt-fade-in" *ngFor="let spot of spots.results | paginate: {
+        itemsPerPage: maxSize,
+        currentPage: pageNumber,
+        totalItems: spots.rows }">
+            <app-spot-preview [spot]="spot"></app-spot-preview>
+        </div>
+    </div>
+
+    <div class="pagination">
+        <pagination-controls class="my-pagination" (pageChange)="changePage($event)" maxSize="5" directionLinks="true"
+            autoHide="true" responsive="true" previousLabel="Poprzednia" nextLabel="Następna">
+        </pagination-controls>
+    </div>
+
+</div>

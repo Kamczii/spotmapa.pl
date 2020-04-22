@@ -2,17 +2,18 @@
 
   #map{
       width: 100%;
-      background: white;
+      background: var(--white-color);
   }
   #legend {
+    font-size: 12px;
     background: var(--white-color);
-    padding: 5px 10px;
-    margin: 5px;
+    padding: 5px 5px;
     border: 1px solid var(--secondary-color);
     border-radius: 5px;
     color: var(--secondary-color);
   }
-  #legend h3 {
+
+  #legend h4 {
     margin-top: 0;
   }
   #legend img {

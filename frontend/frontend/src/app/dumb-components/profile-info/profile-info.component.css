@@ -7,6 +7,7 @@
     padding: 20px 10px;
     border-radius: 5px;
     box-shadow: -1rem 0 3rem #000;
+    margin-bottom: 57px;
 }
 .profile p{
     margin-bottom: 0px;
@@ -28,7 +29,7 @@
     align-content: center;
 }
 .spot{
-    margin-bottom: 15px;
+    
 }
 .detail-info{
     text-align: left;

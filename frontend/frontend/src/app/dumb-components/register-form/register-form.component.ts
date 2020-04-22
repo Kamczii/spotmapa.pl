@@ -24,7 +24,7 @@ export class RegisterFormComponent implements OnInit {
 
   constructor(private profileService: ProfileService, private auth: AuthService, private router: Router, private fb: FormBuilder) { }
 
-  
+
   ngOnInit() {
     this.createForm();
   }

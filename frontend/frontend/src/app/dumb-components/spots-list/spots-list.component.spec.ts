@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditAvatarComponent } from './edit-avatar.component';
+import { SpotsListComponent } from './spots-list.component';
 
-describe('EditAvatarComponent', () => {
-  let component: EditAvatarComponent;
-  let fixture: ComponentFixture<EditAvatarComponent>;
+describe('LastAddedComponent', () => {
+  let component: SpotsListComponent;
+  let fixture: ComponentFixture<SpotsListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [EditAvatarComponent]
+      declarations: [SpotsListComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EditAvatarComponent);
+    fixture = TestBed.createComponent(SpotsListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

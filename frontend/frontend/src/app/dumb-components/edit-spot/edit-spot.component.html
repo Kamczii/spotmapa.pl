@@ -84,7 +84,7 @@
     <div #parttwo class="form-part">
       <legend><span class="number">4</span>Zdjęcia</legend>
       <div *ngIf="spot">
-        <div  *ngFor='let image of spot.images; let i = index' class="image-to-upload">
+        <div *ngFor='let image of spot.images; let i = index' class="image-to-upload">
           <img *ngIf='image' [src]="image.link" height="200">
           <button *ngIf='image' (click)="deleteImage(image.id)"><i class="fa fa-times"></i></button>
         </div>
@@ -112,7 +112,19 @@
 
 <div id="popup">
   <div class="popup">
-    <div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    <div class="lds-default">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
   </div>
 </div>
-

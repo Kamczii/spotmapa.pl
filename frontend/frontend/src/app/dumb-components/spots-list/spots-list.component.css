@@ -1,0 +1,54 @@
+
+.contain{
+    width: 100%;
+  display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+.sorting{
+    margin-bottom: 8vh;
+}
+@media only screen and (min-width: 768px) {
+    .contain{
+
+    }
+    
+}
+
+.spot{
+    margin-bottom: 15px;
+}
+
+   .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+   }
+   .pagination{
+    display: flex;
+    justify-content: center;
+    margin-top: 8vh;
+   }
+   .my-pagination /deep/ .ngx-pagination{
+       color: var(--secondary-color);
+   }
+  .my-pagination /deep/ .ngx-pagination .current {
+    background: var(--main-color);
+    border-radius: 4px;
+}
+.my-pagination /deep/ .ngx-pagination a, button{
+    color: var(--secondary-color);
+}
+.my-pagination /deep/ .ngx-pagination a:hover, .ngx-pagination button:hover {
+    background: var(--white-color);
+    border-radius: 3px;
+    text-decoration: none;
+}
+
+.my-pagination /deep/ .ngx-pagination a:focus, .ngx-pagination button:focus {
+    outline: none;
+    background: var(--white-color);
+}
+

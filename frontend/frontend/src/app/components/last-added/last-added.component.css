@@ -1,0 +1,15 @@
+.main-container {
+    width: 100%;
+    min-height: calc(100vh -  114px);  /* will cover the 100% of viewport */
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 114px;
+    padding-bottom: 100px; /* height of your footer */
+   }
+   .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+   }

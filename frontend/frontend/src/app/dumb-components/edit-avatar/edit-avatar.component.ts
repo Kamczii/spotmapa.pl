@@ -14,7 +14,7 @@ export class EditAvatarComponent implements OnInit {
 
   imageChangedEvent: any = '';
   croppedImage: any = '';
-  fileToUpload: Blob;
+  fileToUpload;
 
   currentAvatar: String;
   editing: boolean = false;
@@ -27,34 +27,41 @@ export class EditAvatarComponent implements OnInit {
     });
   }
 
-    
-    fileChangeEvent(event: any): void {
-      this.editing = true;
-        this.imageChangedEvent = event;
-    }
-    imageCropped(event: ImageCroppedEvent) {
-        this.croppedImage = event.base64;
-        this.fileToUpload = event.file;
-    }
-    imageLoaded() {
-        // show cropper
-    }
-    cropperReady() {
-        // cropper ready
-    }
-    loadImageFailed() {
-        // show message
-    }
-    uploadAvatar(){
-      console.log(typeof this.croppedImage);
-      let file = new File([this.fileToUpload], "avatar.png", {type: "image/png" , lastModified: Date.now()});
-      this.imageService.uploadAvatar(file).subscribe(data => console.log(data));
-    }
 
-    urltoFile(url, filename, mimeType){
-      return (fetch(url)
-          .then(function(res){return res.arrayBuffer();})
-          .then(function(buf){return new File([buf], filename, {type:mimeType});})
-      );
-    }
+  fileChangeEvent(event: any): void {
+    this.editing = true;
+    this.imageChangedEvent = event;
+  }
+
+  imageCropped(event: ImageCroppedEvent) {
+    this.croppedImage = event.base64;
+    this.fileToUpload = event.base64;
+  }
+  imageLoaded() {
+    // show cropper
+  }
+  cropperReady() {
+    // cropper ready
+  }
+  loadImageFailed() {
+    // show message
+  }
+
+  uploadAvatar() {
+    const that = this;
+    this.urltoFile(this.fileToUpload, "avatar.png", "image/png").then(
+      function (file) {
+        that.imageService.uploadAvatar(file).subscribe(data => console.log(data));
+      }
+    );
+    // let file = new File([this.fileToUpload], "avatar.png", {type: "image/png" , lastModified: Date.now()});
+    // console.log(file);
+  }
+
+  urltoFile(url, filename, mimeType) {
+    return (fetch(url)
+      .then(function (res) { return res.arrayBuffer(); })
+      .then(function (buf) { return new File([buf], filename, { type: mimeType }); })
+    );
+  }
 }

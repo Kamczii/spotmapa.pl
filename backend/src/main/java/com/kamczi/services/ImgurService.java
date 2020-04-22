@@ -72,14 +72,14 @@ public class ImgurService {
     
     public BasicImgurResponse uploadProfilePicture(MultipartFile file) throws IOException{
         byte[] image = file.getBytes();
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Authorization", "Client-ID "+CLIENT_ID);
-        HttpEntity<byte[]> requestEntity = new HttpEntity<>(image, headers);
-        RestTemplate template = new RestTemplate();
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(IMGUR_API+"/image");
-        ResponseEntity<BasicImgurResponse> response = template.exchange(builder.toUriString(), HttpMethod.POST, requestEntity, BasicImgurResponse.class);
+                HttpHeaders headers = new HttpHeaders();
+                headers.add("Authorization", "Client-ID "+CLIENT_ID);
+                HttpEntity<byte[]> requestEntity = new HttpEntity<>(image, headers);
+                RestTemplate restTemplate = new RestTemplate();
+                UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(IMGUR_API+"/image");
+                ResponseEntity<BasicImgurResponse> response = restTemplate.exchange(builder.toUriString(), HttpMethod.POST, requestEntity, BasicImgurResponse.class);
         if(response.getBody().getSuccess()){
-            deleteProfilePictureIfExistFromDB();
+            deleteProfilePicture();
             addProfilePictureToDB(response.getBody().getData());
         }
         return response.getBody();

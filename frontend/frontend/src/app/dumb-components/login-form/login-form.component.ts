@@ -12,7 +12,7 @@ declare var FB: any;
 export class LoginFormComponent implements OnInit {
 
   @Output() checkAuthEvent = new EventEmitter();
-  
+
   loginForm: FormGroup;
   failed = false;
 

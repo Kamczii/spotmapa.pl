@@ -50,13 +50,12 @@ export class SpotMapComponent implements OnInit {
     }
   };
 
-  constructor(private injector: Injector, private spotService: SpotService, private resolver: ComponentFactoryResolver, private appRef: ApplicationRef) { 
-   
-    
+  constructor(private injector: Injector, private spotService: SpotService, private resolver: ComponentFactoryResolver, private appRef: ApplicationRef) {
+
+
   }
 
   ngOnInit() {
-
     this.sc.pageNumber = this.pageNumber - 1;
     this.sc.maxResults = this.maxSize;
 
@@ -107,7 +106,7 @@ export class SpotMapComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    
+
     const mapProperties = {
       center: new google.maps.LatLng(53, 18),
       zoom: 6,
@@ -119,11 +118,11 @@ export class SpotMapComponent implements OnInit {
 
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function (position) {
-          const initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-          that.map.setCenter(initialLocation);
-          that.map.setZoom(10);
+        const initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        that.map.setCenter(initialLocation);
+        that.map.setZoom(10);
       });
-    }else{
+    } else {
 
     }
   }

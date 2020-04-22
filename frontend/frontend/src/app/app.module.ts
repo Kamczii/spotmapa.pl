@@ -29,7 +29,7 @@ import { CommentListComponent } from './dumb-components/comment-list/comment-lis
 import { SpotPreviewComponent } from './dumb-components/spot-preview/spot-preview.component';
 import { FooterComponent } from './dumb-components/footer/footer.component';
 import { MatRadioModule } from '@angular/material/radio';
-import { LastAddedComponent } from './dumb-components/last-added/last-added.component';
+import { SpotsListComponent } from './dumb-components/spots-list/spots-list.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { TruncatePipe } from './pipes/TruncatePipe';
@@ -43,6 +43,9 @@ import { EditProfileComponent } from './dumb-components/edit-profile/edit-profil
 import { EditAvatarComponent } from './dumb-components/edit-avatar/edit-avatar.component';
 import { ProfileComponentsContainerComponent } from './dumb-components/profile-components-container/profile-components-container.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { Angular2ImageGalleryModule } from 'angular2-image-gallery';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { LastAddedComponent } from './components/last-added/last-added.component';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -76,6 +79,7 @@ export class MyHammerConfig extends HammerGestureConfig {
     CommentListComponent,
     SpotPreviewComponent,
     FooterComponent,
+    SpotsListComponent,
     LastAddedComponent,
     LoadingSpinnerComponent,
     TruncatePipe,
@@ -101,12 +105,13 @@ export class MyHammerConfig extends HammerGestureConfig {
     NoopAnimationsModule,
     FormsModule,
     HttpClientModule,
-    GalleryModule,
     InfiniteScrollModule,
     Ng2CarouselamosModule,
     LightboxModule,
     MatRadioModule,
+    Angular2ImageGalleryModule,
     ImageCropperModule,
+    NgxPaginationModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

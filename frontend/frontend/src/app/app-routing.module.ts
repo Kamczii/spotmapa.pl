@@ -6,7 +6,7 @@ import { SpotMapComponent } from './dumb-components/spot-map/spot-map.component'
 import { HomeComponentComponent } from './dumb-components/home-component/home-component.component';
 import { AddSpotComponent } from './dumb-components/add-spot/add-spot.component';
 import { SpotComponent } from './dumb-components/spot/spot.component';
-import { LastAddedComponent } from './dumb-components/last-added/last-added.component';
+import { SpotsListComponent } from './dumb-components/spots-list/spots-list.component';
 import { UpdateSpotComponent } from './dumb-components/update-spot/update-spot.component';
 import { IdBasedService } from './routeGuards/id-based.service';
 import { SpotContainerComponent } from './dumb-components/spot-container/spot-container.component';
@@ -15,16 +15,19 @@ import { ProfileInfoComponent } from './dumb-components/profile-info/profile-inf
 import { UserEditGuardService } from './routeGuards/user-edit-guard.service';
 import { EditProfileComponent } from './dumb-components/edit-profile/edit-profile.component';
 import { ProfileComponentsContainerComponent } from './dumb-components/profile-components-container/profile-components-container.component';
+import { LastAddedComponent } from './components/last-added/last-added.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 
   { path: 'home', component: HomeComponentComponent },
-  { path: 'profile', component: ProfileComponentsContainerComponent, children:[
-    { path: ':id', component: ProfileInfoComponent },
-    { path: ':id/update', component: EditProfileComponent, canActivate: [UserEditGuardService] }
-  ]}
+  {
+    path: 'profile', component: ProfileComponentsContainerComponent, children: [
+      { path: ':id', component: ProfileInfoComponent },
+      { path: ':id/update', component: EditProfileComponent, canActivate: [UserEditGuardService] }
+    ]
+  }
   ,
   { path: 'last', component: LastAddedComponent },
   {

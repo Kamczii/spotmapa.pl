@@ -4,6 +4,22 @@
  border-radius: 5px;
  color: var(--secondary-color);
 }
+
+@media only screen and (min-width: 1400px) {
+  .col-xxl-4{
+      width:33.33%;
+  }
+  .col-xxl-8{
+    width:66.66%;
+  }
+  .col-xxl-3{
+    width:25%;
+}
+.col-xxl-2{
+  width:16.66%;
+}
+}
+
 select{
   font-weight: bold;
   border: 1px solid var(--secondary-color);

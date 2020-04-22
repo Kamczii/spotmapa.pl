@@ -19,8 +19,8 @@ export class NavbarComponent implements OnInit {
     this.checkAuthentication();
   }
 
-  checkAuthentication(){
-    if(this.auth.isAuthenticated()){
+  checkAuthentication() {
+    if (this.auth.isAuthenticated()) {
       this.profileService.getCurrentUserProfile().subscribe(data => this.profile = data)
     }
   }

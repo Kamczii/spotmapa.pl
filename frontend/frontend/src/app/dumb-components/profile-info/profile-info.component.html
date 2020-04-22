@@ -7,25 +7,23 @@
             <div *ngIf="user" class="row">
                 <div class="col-sm-12 col-xl-6">
                     <div class="profile">
-                        <img src="{{user.avatar_url}}"> 
+                        <img src="{{user.avatar_url}}">
                         <h1>{{user.username}}</h1>
                         <p *ngIf="user.description">{{user.description}}</p>
 
-                        <p class="detail-info" *ngIf="spotsCount">Dodał {{spotsCount}} spotów</p>
-                        <p class="detail-info" >Z nami od {{user.created_at | date: 'dd.MM.yyyy'}}</p>
+                        <p class="detail-info" *ngIf="spots">Dodał {{spots.rows}} spotów</p>
+                        <p class="detail-info">Z nami od {{user.created_at | date: 'dd.MM.yyyy'}}</p>
                         <p class="detail-info" *ngIf="isUserOwningProfile"><a [routerLink]="['update']">Edytuj</a></p>
                     </div>
                 </div>
 
                 <div class="spots col-sm-12 col-xl-6">
-                    <div class="spot ld ldt-fade-in" *ngFor="let spot of spots">
-                        <app-spot-preview [spot]="spot"></app-spot-preview>
-                    </div>
+                    <app-spots-list [showSorting]="false" [spots]="spots" (emitter)="getSpots()"></app-spots-list>
                 </div>
             </div>
         </div>
         <div class="col-xl-3 col-sm-12">
-            
+
         </div>
     </div>
 </div>

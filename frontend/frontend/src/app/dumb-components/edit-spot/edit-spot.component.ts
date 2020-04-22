@@ -110,30 +110,30 @@ export class EditSpotComponent implements OnInit {
 
     document.getElementById("popup").style.display = 'flex';
     document.getElementById("popup").style.opacity = '1';
-    this.spotService.updatePost(spot, this.spotID ).subscribe(added => {
+    this.spotService.updatePost(spot, this.spotID).subscribe(added => {
 
-      if(files.length>0){
+      if (files.length > 0) {
         this.spotService.addImagesToSpot(added.spot_id, files).subscribe(data => {
           this.afterUpdate(added.spot_id, added.name);
         });
-      }else{
+      } else {
         this.afterUpdate(added.spot_id, added.name);
       }
-      
+
     });
   }
 
-  afterUpdate(spot_id: number, name: string){
+  afterUpdate(spot_id: number, name: string) {
     this.creatingForm.reset();
-        this.urls = [];
-        this.files = [];
-        this.submitted = false;
-        
-        this.addedSpot = name;
-        document.getElementById("popup").style.opacity = '0';
-        document.getElementById("popup").style.display = 'none';
+    this.urls = [];
+    this.files = [];
+    this.submitted = false;
 
-        this.router.navigate(['/spots/'+spot_id]);
+    this.addedSpot = name;
+    document.getElementById("popup").style.opacity = '0';
+    document.getElementById("popup").style.display = 'none';
+
+    this.router.navigate(['/spots/' + spot_id]);
   }
 
   createForm() {
@@ -205,10 +205,10 @@ export class EditSpotComponent implements OnInit {
       return true;
   };
 
-  deleteImage(deleteHash: string){
+  deleteImage(deleteHash: string) {
     if (confirm('Czy na pewno chcesz usunąć zdjęcie?')) {
-      this.spotService.deleteImageFromSpotByDeletehash(this.spotID,deleteHash).subscribe(data => {
-        if(data.success){
+      this.spotService.deleteImageFromSpotByDeletehash(this.spotID, deleteHash).subscribe(data => {
+        if (data.success) {
           this.spotService.getSpotById(this.spotID).subscribe(data => {
             this.spot.images = data.images;
           });
