@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { User } from 'src/app/models/user';
 import { RegisterFormComponent } from 'src/app/dumb-components/register-form/register-form.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -24,4 +25,7 @@ export class NavbarComponent implements OnInit {
       this.profileService.getCurrentUserProfile().subscribe(data => this.profile = data)
     }
   }
+
+
+  
 }

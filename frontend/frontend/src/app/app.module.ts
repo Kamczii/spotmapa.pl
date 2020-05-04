@@ -46,6 +46,11 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { Angular2ImageGalleryModule } from 'angular2-image-gallery';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { LastAddedComponent } from './components/last-added/last-added.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ForgotPasswordEmailFormComponent } from './dumb-components/forgot-password-email-form/forgot-password-email-form.component';
+import { NewPasswordFormComponent } from './dumb-components/new-password-form/new-password-form.component';
+import { NeedLoginComponent } from './dumb-components/need-login/need-login.component';
+import { PolicyComponent } from './dumb-components/policy/policy.component';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -91,7 +96,12 @@ export class MyHammerConfig extends HammerGestureConfig {
     ProfileInfoComponent,
     EditProfileComponent,
     EditAvatarComponent,
-    ProfileComponentsContainerComponent
+    ProfileComponentsContainerComponent,
+    ForgotPasswordComponent,
+    ForgotPasswordEmailFormComponent,
+    NewPasswordFormComponent,
+    NeedLoginComponent,
+    PolicyComponent
   ],
   imports: [
     BrowserModule,

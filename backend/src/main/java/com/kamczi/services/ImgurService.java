@@ -10,8 +10,8 @@ import com.kamczi.entities.Avatar;
 import com.kamczi.entities.Image;
 import com.kamczi.entities.Spot;
 import com.kamczi.entities.User;
-import com.kamczi.imgur.BasicImgurResponse;
-import com.kamczi.imgur.DeleteBasicImgurResponse;
+import com.kamczi.responses.BasicImgurResponse;
+import com.kamczi.responses.DeleteBasicImgurResponse;
 import com.kamczi.models.ImageModel;
 import com.kamczi.repository.AvatarRepository;
 import com.kamczi.repository.ImageRepository;
@@ -86,7 +86,10 @@ public class ImgurService {
     }
     
     public DeleteBasicImgurResponse deleteProfilePicture() throws IOException{
+        
         User user = userService.getCurrentUser();
+        if(user.getAvatar().getDeletehash()!=null){
+            
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "Client-ID "+CLIENT_ID);
         HttpEntity<byte[]> requestEntity = new HttpEntity<>(null, headers);
@@ -96,6 +99,8 @@ public class ImgurService {
         if(response.getBody().getSuccess())
             deleteProfilePictureIfExistFromDB();
         return response.getBody();
+        }
+        else return null;
     }
     
     private void addProfilePictureToDB(ImageModel model){

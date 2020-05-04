@@ -1,14 +1,13 @@
 .main-container{
     color: var(--secondary-color);
 }
-.contain{
-    width: 100%;
-    display: inline-flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-start;
-    align-content: center;
-    padding-top: 60px;
+.btn{
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+
+.container{
+  max-width: 100%;
 }
 .header{
     box-sizing: border-box;
@@ -23,8 +22,17 @@
     border-radius: 5px;
     color: var(--secondary-color);
 }
-
+.contain{
+  width: 100%;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: center;
+  padding-top: 60px;
+}
 @media only screen and (min-width: 768px) {
+  
     .wrapper{
       border-radius: 6px;
     }
@@ -61,20 +69,76 @@
     transition: 0.4s ease-out;
   }
 .main-container {
-    min-height: calc(100vh -  114px); /* will cover the 100% of viewport */
     overflow: hidden;
-    display: block;
-    position: relative;
-    align-items: center;
-    padding-bottom: 100px; /* height of your footer */
-   }
-   @media only screen and (min-width: 768px) {
-    .main-container{
-        margin-top: 114px;
-    }
-}
-   .footer {
-    position: absolute;
-    bottom: 0;
     width: 100%;
+    display: block;
    }
+
+.footer{
+  position: absolute;
+  bottom: 0;
+  width:100%;
+}
+
+ 
+header.masthead {
+  
+    background-image: url('../../../assets/bg.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  padding-top: 10rem;
+  padding-bottom: calc(10rem - 4.5rem);
+  
+  height: 100vh;
+}
+header.masthead h1 {
+  font-size: 2.25rem;
+}
+@media (max-width: 992px){
+  header.masthead {
+    min-height: calc(100vh - 56px);
+  }
+}
+@media (min-width: 992px) {
+  header.masthead {
+    height: 100vh;
+    min-height: 40rem;
+    padding-top: 4.5rem;
+    padding-bottom: 0;
+  }
+  header.masthead p {
+    font-size: 1.15rem;
+  }
+  header.masthead h1 {
+    font-size: 3rem;
+  }
+}
+@media (min-width: 1200px) {
+  header.masthead h1 {
+    font-size: 3.5rem;
+  }
+}
+
+.page-section {
+  padding: 8rem 0;
+  min-height: 100vh;
+  color: var(--secondary-color);
+}
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+  background: var(--secondary-color);
+  max-width: 50%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}

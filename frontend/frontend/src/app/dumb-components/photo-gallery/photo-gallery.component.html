@@ -1,9 +1,9 @@
 <div class="demo-gallery">
-    <ul id="lightgallery" class="list-unstyled row">
+    <ul id="lightgallery" class="list-unstyled">
 
-        <li *ngFor="let img of images; let i = index" class="col-12 col-md-4 col-xl-3">
+        <li *ngFor="let img of images; let i = index">
             <a (click)="goFullScreen(i)">
-                <img class="img-responsive" src="{{img.link}}">
+                <img  src="{{img.link}}">
             </a>
         </li>
     </ul>

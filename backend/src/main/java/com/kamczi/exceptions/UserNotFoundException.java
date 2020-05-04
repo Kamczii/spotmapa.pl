@@ -18,5 +18,9 @@ public class UserNotFoundException extends RuntimeException {
     public UserNotFoundException(String id) {
         super("Could not find user with auth0_id: "+id);
     }
+
+    public UserNotFoundException() {
+        throw new UnsupportedOperationException("Could not find user"); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

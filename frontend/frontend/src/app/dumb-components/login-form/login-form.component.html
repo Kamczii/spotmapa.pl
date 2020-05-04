@@ -1,7 +1,8 @@
+
 <form [formGroup]="loginForm">
-    <p class="hint-text"><b>Zaloguj się za pomocą facebook'a</b></p>
-    <a class="fb connect" (click)="facebookLogin()">Logowanie</a>
-    <div class="or-seperator"><b>lub</b></div>
+    <p class="hint-text"><b>Zaloguj się</b></p>
+    <!-- <a class="fb connect" (click)="facebookLogin()">Logowanie</a>
+    <div class="or-seperator"><b>lub</b></div> -->
     <div class="form-group">
         <input type="text" class="form-control" placeholder="Nazwa użytkownika" required="required"
             formControlName="nickname">
@@ -14,6 +15,6 @@
     </div>
     <input type="submit" (click)="login()" class=" submit-button " value="Zaloguj">
     <div class="form-footer">
-        <a href="#">Zapomniałeś hasła?</a>
+        <a  [routerLink]="['/password-recovery']">Zapomniałeś hasła?</a>
     </div>
 </form>

@@ -64,6 +64,21 @@ public class SpotService {
         
         return page;
     }
+    
+    public PageWrapper<SpotModel> getPostsBySpotType(Pageable pageable, SpotType spotType){
+        List<Spot> posts = spotRepo.findBySpotType(spotType, pageable);
+        List<SpotModel> postModels = new ArrayList<>();
+        for(Spot post: posts){
+            postModels.add(new SpotModel(post));
+        }
+        
+        PageWrapper<SpotModel> page = new PageWrapper<>();
+        page.setResults(postModels);
+        page.setRows(spotRepo.findAll().size());
+        
+        return page;
+    }
+    
     public Spot updatePost(SpotModel model, Long id){
         SpotType spotType = model.getSpotType();
         Spot post = spotRepo.findById(id).get();
@@ -176,6 +191,9 @@ public class SpotService {
         return commentModels;
     }
     
+    public Comment getCommentById(Long id){
+        return commentRepo.findById(id).get();
+    }
     public boolean isPostAlreadyLiked(Long id){
         User user = userService.getCurrentUser();
         Spot post = spotRepo.findById(id).get();
@@ -232,9 +250,14 @@ public class SpotService {
     }
     
     public boolean checkIfUserOwnsThePost(Long postId){
-        if(userService.getCurrentUser().getUser_id()==getPostById(postId).getUser().getUser_id())
+        if(userService.getCurrentUser().getUser_id()==getPostById(postId).getUser().getId())
             return true;
         else 
             return false;
+    }
+
+    public void deleteCommentById(Long id) {
+        if(userService.getCurrentUser().getUser_id()==getCommentById(id).getAuthor().getUser_id())
+            commentRepo.deleteById(id);
     }
 }

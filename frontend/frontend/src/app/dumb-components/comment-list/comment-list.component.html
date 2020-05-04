@@ -2,12 +2,7 @@
     <div *ngIf="auth.isAuthenticated()" class="input">
         <app-comment-form (refreshComments)="getComments()" [id]="id"></app-comment-form>
     </div>
-    <p class="coms">
 
-        <app-comment-preview *ngFor="let comment of coms" [comment]="comment"></app-comment-preview>
-    </p>
-
-    <p *ngIf="coms.length == 0">
-        Brak opinii
-    </p>
+        <app-comment-preview (refreshComments)="getComments()" *ngFor="let comment of coms" [comment]="comment"></app-comment-preview>
+    
 </div>

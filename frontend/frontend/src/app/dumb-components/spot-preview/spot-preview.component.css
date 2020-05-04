@@ -2,7 +2,7 @@
 .wrapper{
     box-sizing: border-box;
     width: 300px;
-    height: 325px;
+    height: 335px;
     padding: 0;
     padding: 8px;
     background: var(--white-color);
@@ -37,7 +37,9 @@ img.images{
     white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-    font-size: 18px;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: .2rem;
   }
 
   .colored-text{
@@ -81,6 +83,7 @@ img.images{
   }
   
   .section{
+    text-align: left;
     padding: 5px 10px;
   }
   
@@ -88,7 +91,9 @@ img.images{
     color:  var(--secondary-color);
     text-decoration: none;
   }
-  
+  .unlike:first-child{
+    margin-right: 5px;
+  }
   .like , .unlike{
     position: relative;
     bottom: 4px;
@@ -97,6 +102,7 @@ img.images{
     margin: 0;
   }
   .like img, .unlike img{
+    margin-left: 5px;
     position: relative;
     bottom: 2px;
     width: 20px;
@@ -121,14 +127,17 @@ img.images{
   }
 
   .profile{
-      margin: 0;
-    font-size: 30px;
-    margin-top:20px;
+      margin-left: -10px;
+    font-size: 22px;
+    margin-top: 10px;
+    margin-bottom: 0 !important;
   }
 
   .profile img{
-    height:50px;width:50px;position: relative;top:-15px; margin-right: 5px;
+    height:33px;width:33px;position: relative;top:-10px;margin-right: 5px;
     border-radius: 5px;
   }
 
- 
+ .col-12{
+   padding:0;
+ }

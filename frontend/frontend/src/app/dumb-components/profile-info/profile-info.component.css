@@ -1,36 +1,11 @@
-
+img{
+    width: 50%;
+    border-radius: 5px;
+}
 .profile{
-    color: var(--secondary-color);
     text-align: center;
-    background: var(--white-color);
-    width: 100%;
-    padding: 20px 10px;
-    border-radius: 5px;
-    box-shadow: -1rem 0 3rem #000;
-    margin-bottom: 57px;
+    color: var(--secondary-color);
 }
-.profile p{
-    margin-bottom: 0px;
-}
-.profile p:nth-of-type(1){
-    margin-bottom: 12px;
-}
-.profile img{
-    width: 100%;
-    max-width: 250px;
-    border-radius: 5px;
-}
-.spots{
-    align-content: center;
-    display: inline-flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-start;
-    align-content: center;
-}
-.spot{
-    
-}
-.detail-info{
-    text-align: left;
+h2{
+    color: var(--secondary-color);
 }

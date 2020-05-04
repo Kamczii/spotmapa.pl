@@ -1,8 +1,12 @@
-<div class="comment-input">
-    <form (submit)="addComment()" [formGroup]="form">
-        <textarea formControlName="commentControl" placeholder="Napisz co myślisz ..."></textarea>
-        <div class="submit">
-            <button [disabled]="!form.valid" type="submit">Skomentuj</button>
+
+<div class="card my-4">
+    <h5 class="card-header">Zostaw komentarz:</h5>
+    <div class="card-body">
+      <form (submit)="addComment()" [formGroup]="form">
+        <div class="form-group">
+          <textarea formControlName="commentControl" class="form-control" rows="3" placeholder="Napisz co myślisz ..."></textarea>
         </div>
-    </form>
-</div>
+        <button [disabled]="!form.valid" type="submit">Skomentuj</button>
+      </form>
+    </div>
+  </div>

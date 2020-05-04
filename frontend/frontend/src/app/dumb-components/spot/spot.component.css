@@ -1,102 +1,16 @@
-
-.wrapper{
-  font-size: 120%;
+.container{
   color: var(--secondary-color);
-  background: var(--white-color);
-  box-shadow: -1rem 0 3rem #000;
-}
-h1{
-  text-overflow: ellipsis;
-}
-p{
-  padding: 0;
 }
 
-.colored-text{
-  color: var(--secondary-color);
+a{
+  color: var(--main-color);
 }
-.colored-text-second{
-  color: var(--secondary-color);
-}
-img{
+
+.header-photo img{
   object-fit: cover;
   width: 100%;
   height: 200px;
 }
-.bookmark{
-  width: 100%;
-  border: none;
-  padding: 8px 2px;
-  border-bottom: 4px solid var(--white-color);
-  font-size: 17px;
-}
-
-.active{
-  border-color: var(--secondary-color);
-  -webkit-transition:  .8s; /* For Safari 3.1 to 6.0 */
-  transition:  .8s;
-  
-}
-
-.active a{
-  color: var(--secondary-color);
-}
-.bookmarks{
-  width: 100%;
-  margin: 0;
-  font-weight: bold;
-  background: var(--white-color);
-}
-.col-3{
-  padding: 8px 0px;
-  text-align: center;
-}
-
-.likes-count
-{
-  margin-right: 5px;
-}
-a{
-  color:  var(--main-color);
-}
-
-.like , .unlike{
-  font-size: 44px;
-  padding: 0;
-  margin: 0;
-}
-.like img, .unlike img{
-  position: relative;
-  bottom: 2px;
-  width: 30px;
-  height: 30px;
-  -webkit-transition:  .3s; /* For Safari 3.1 to 6.0 */
-  transition:  .3s;
-}
-.like img:hover, .unlike img:hover{
-  opacity: .5;
-  cursor: pointer;
-}
-.map{
-  padding: 0 25px;
-}
-.type{
-  margin: 0;
-}
-.type a{
-  color: var(--secondary-color);
-}
-a.anchor {
-  position: relative;
-  top: -57px;
-  visibility: hidden;
-}
-
-
-.section{
-  padding: 25px;
-}
-
 .header-photo img.images{
   object-fit: cover;
   width: 100%;
@@ -110,16 +24,43 @@ a.anchor {
 .header-photo{
   text-align: center;
 }
+.author a{
+  font-size: 35px;
+}
+.author img{
+  height:35px;width:35px;position: relative;top:-5px; margin-right: 5px; border-radius: 5px;
+}
+.card{
+  background: var(--white-color);
+}
+p{
+  margin-bottom: 0;
+}
 
-.main-container {
-  min-height: 100vh; /* will cover the 100% of viewport */
-  overflow: hidden;
-  display: block;
+.like , .unlike{
+  font-size: 40px;
+  padding: 0;
+  margin: 0;
+}
+.like img, .unlike img{
   position: relative;
-  padding-bottom: 150px; /* height of your footer */
- }
- .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
- }
+  bottom: 2px;
+  width: 35px;
+  height: 35px;
+  -webkit-transition:  .3s; /* For Safari 3.1 to 6.0 */
+  transition:  .3s;
+  margin-left: 5px;
+}
+.like img:hover, .unlike img:hover{
+  opacity: .5;
+  cursor: pointer;
+}
+.com-count{
+  margin-left: 5px;
+}
+.com-count a{
+  color: var(--secondary-color)
+}
+.delete{
+  color: red;
+}

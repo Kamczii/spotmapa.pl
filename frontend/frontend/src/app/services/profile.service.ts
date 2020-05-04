@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
+import { GenericResponse } from '../models/genericresponse';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,9 @@ export class ProfileService {
     return this.http.put<User>(environment.api_endpoint + "/private/user/update", user);
   }
 
+  changePassword(id: string, token: string, newPassword: string): Observable<GenericResponse>{
+    return this.http.post<GenericResponse>(environment.api_endpoint + "/user/changePassword?id="+id+"&token="+token,{"newPassword":newPassword});
+  }
   checkIfUserContent(path_id: number) {
 
     console.log(path_id + ' ' + this.auth.getUserId())

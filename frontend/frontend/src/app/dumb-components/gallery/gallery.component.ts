@@ -15,7 +15,7 @@ export class GalleryComponent implements OnInit {
   image;
   currentImage = 0;
 
-  lightboxEnabled = false;
+  lightboxEnabled = true;
 
   imageRef;
 

@@ -18,6 +18,7 @@ export class EditAvatarComponent implements OnInit {
 
   currentAvatar: String;
   editing: boolean = false;
+  isLoading = false;
   constructor(private imageService: ImageService, private profileService: ProfileService, private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -48,10 +49,16 @@ export class EditAvatarComponent implements OnInit {
   }
 
   uploadAvatar() {
+    this.isLoading = true;
     const that = this;
     this.urltoFile(this.fileToUpload, "avatar.png", "image/png").then(
       function (file) {
-        that.imageService.uploadAvatar(file).subscribe(data => console.log(data));
+        that.imageService.uploadAvatar(file).subscribe(data => 
+          {
+            console.log(data.data.link)
+            that.reset(data.data.link);
+          }
+          );
       }
     );
     // let file = new File([this.fileToUpload], "avatar.png", {type: "image/png" , lastModified: Date.now()});
@@ -63,5 +70,14 @@ export class EditAvatarComponent implements OnInit {
       .then(function (res) { return res.arrayBuffer(); })
       .then(function (buf) { return new File([buf], filename, { type: mimeType }); })
     );
+  }
+
+  reset(link: String){
+    this.isLoading = false;
+    this.imageChangedEvent = '';
+    this.croppedImage = '';
+    this.fileToUpload = '';
+    this.currentAvatar = link;
+    this.editing = false;
   }
 }

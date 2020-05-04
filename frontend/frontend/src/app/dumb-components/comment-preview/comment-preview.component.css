@@ -1,70 +1,17 @@
-
-.comment-wrapper{
-    float: right !important;
-    margin: 10px;
-  }
-  
-  .edited{
-    color: gray;
-  }
-  
-  .edited:hover{
-    cursor: pointer;
-  }
-  
-
-  
-  .comment-content{
-    padding: 5px;
-    font: size 110%;
-  }
-  
-  .comment-wrapper img{
-    width: 100%;
-  }
-  
-  .thumbnail{
-    padding: 5px;
-    border: 2px solid var(--secondary-color);
-    border-radius: 5px;
-    text-overflow: ellipsis;
-    float: right;
-  }
-  figcaption{
-    background: var(--secondary-color);
-    color: var(--white-color);
-    word-break: break-all;
-  }
-  .panel{
-    border: 1px solid var(--secondary-color);
-    border-radius: 5px;
-  }
-  
-  .comment-header {
-      position: relative;
-      
-    background: var(--secondary-color);
-    color: var(--white-color);
-    padding: 5px;
-  }
-  .comment-header:after {
-      right: 100%;
-      top: 50%;
-      border: solid transparent;
-      content: " ";
-      height: 0;
-      width: 0;
-      position: absolute;
-      pointer-events: none;
-      border-color: rgba(0, 0, 0, 0);
-      border-right-color: var(--secondary-color);
-      border-width: 15px;
-      margin-top: -15px;
-  }
-  .col-8{
-    padding: 0;
-  }
-
-  a{
-    color: var(--secondary-color)
-  }
+img{
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+}
+a{
+  color: var(--secondary-color)
+}
+button{
+  background: none;
+  border: none;
+  color: var(--secondary-color);
+  float: right;
+}
+button:hover{ 
+  color: var(--main-color);
+}

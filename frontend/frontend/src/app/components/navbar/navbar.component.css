@@ -1,10 +1,10 @@
 .position{
-    
     position: fixed;
   top: 0;
   z-index: 100;
-  width: 100vw;
+  width: 100%;
 }
+
 .form-control {
     box-shadow: none;		
     font-weight: normal;
@@ -23,15 +23,31 @@
     padding-left: 16px;
     padding-right: 16px;
     border-radius: 0;
+    transition: all 1.2s;
 }
 
 .navbar-brand{
-    color: white;
+    color: var(--secondary-color);
     font-weight: bold;
+    transition: all .5s
 }
-.navbar-brand:hover{
-    color: var(--white-color);
-}
+
+.navbar-brand:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--lighter-color);
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+  }
+  .navbar-brand:hover:before {
+    visibility: visible;
+    transform: scaleX(1);
+  }
 .nav-link img {
     border-radius: 5px;
     width: 36px;
@@ -52,10 +68,45 @@
 }
 .navbar .nav li {
     position: relative;
+    padding-right: 5px;
+    padding-left: 5px;
 }
 .navbar .nav li a {
-    color: #ecf6de;
+    color: var(--secondary-color);
     font-weight: bold;
+    transition: all .3s;
+}
+.active:before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--lighter-color);
+    visibility: visible;
+    transform: scaleX(1);
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.navbar .nav li a:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--lighter-color);
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+  }
+  .navbar .nav li a:hover:before {
+    visibility: visible;
+    transform: scaleX(1);
+  }
+.navbar .nav li:hover a {
+    color: var(--lighter-color);
 }
 .search-box {
     position: relative;
@@ -94,7 +145,7 @@
     background: #31bfb1;
 }
 .navbar .navbar-right li:first-child a {
-    padding-right: 30px;
+
 }
 .navbar .nav-item i {
     font-size: 18px;

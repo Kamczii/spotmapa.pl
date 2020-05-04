@@ -9,9 +9,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.kamczi.enums.SpotType;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,6 +23,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
@@ -43,9 +48,10 @@ public class Spot {
     @OneToMany(mappedBy="spot")
     @JsonIgnore
     private List<Comment> comments = new ArrayList<Comment>();
+    
     @OneToMany(mappedBy="spot", orphanRemoval = true, cascade = CascadeType.PERSIST)
     @JsonIgnore
-    private List<SpotLikes> likes  = new ArrayList<SpotLikes>();
+    private Set<SpotLikes> likes  = new TreeSet<SpotLikes>();
     
     @Column(precision = 11, scale = 8)
     private Double lng;
@@ -126,11 +132,11 @@ public class Spot {
         this.comments = comments;
     }
 
-    public List<SpotLikes> getLikes() {
+    public Set<SpotLikes> getLikes() {
         return likes;
     }
 
-    public void setLikes(List<SpotLikes> likes) {
+    public void setLikes(Set<SpotLikes> likes) {
         this.likes = likes;
     }
 

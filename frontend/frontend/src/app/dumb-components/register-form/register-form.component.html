@@ -1,9 +1,9 @@
 <div class="ld ldt-grow-ttb">
 
 	<form [formGroup]="registerForm">
-		<p class="hint-text"><b>Zarejestruj się za pomocą facebook'a</b></p>
+		<!-- <p class="hint-text"><b>Zarejestruj się za pomocą facebook'a</b></p>
 		<a class="fb connect" (click)="facebookRegister()">Rejestracja</a>
-		<div class="or-seperator"><b>lub</b></div>
+		<div class="or-seperator"><b>lub</b></div> -->
 		<p class="hint-text"><b>Wypełnij formularz, żeby stworzyć konto!</b></p>
 
 		<div class="form-group">
@@ -90,7 +90,7 @@
 
 		<div class="form-group">
 			<label class="checkbox-inline"><input name="checkbox" formControlName="checkbox" type="checkbox"
-					required="required"> Akceptuję warunki <a href="#">Terms &amp; Conditions</a></label>
+					required="required"> Akceptuję warunki <a [routerLink]="['/policy']">Terms &amp; Conditions</a></label>
 		</div>
 
 		<div *ngIf="submitted && f.checkbox.hasError('required')" class="form-group error">

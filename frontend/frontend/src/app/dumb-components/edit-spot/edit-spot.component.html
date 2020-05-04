@@ -110,21 +110,4 @@
   </form>
 </div>
 
-<div id="popup">
-  <div class="popup">
-    <div class="lds-default">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
-</div>
+<app-loading-spinner *ngIf="isLoading"></app-loading-spinner>

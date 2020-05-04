@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt/src/jwthelper.service';
 import { JwtTokenResponse } from '../models/JwtTokenResponse';
 import * as jwt_decode from 'jwt-decode';
+import { GenericResponse } from '../models/genericresponse';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +40,10 @@ export class AuthService {
     return this.http.post<User>(environment.api_endpoint + '/public/users/sign-up', { email, username, password });
   }
 
+  public requestPasswordReset(email: String): Observable<GenericResponse>{
+    return this.http.post<GenericResponse>(environment.api_endpoint + "/public/user/resetPassword?email="+email,{});
+  }
+
   public handleAuthentication(token: String) {
     localStorage.setItem('access_token', token.toString());
     this.getUserId();
@@ -57,6 +62,7 @@ export class AuthService {
     console.log('refreshing token')
     return this.http.get<any>(environment.api_endpoint + '/refresh-token');
   }
+
 
   getUserId() {
     if (this.isAuthenticated()) {

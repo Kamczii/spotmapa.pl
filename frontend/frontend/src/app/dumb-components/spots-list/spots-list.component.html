@@ -1,12 +1,11 @@
 <div class="sort-wrapper">
     <div *ngIf="showSorting" class="sorting">
-
         <app-sort-post class="ldt-float-down-in" (refreshPosts)="getSpots()" [title]="title" [sc]="sc"></app-sort-post>
     </div>
 
-    <div *ngIf="spots" class="contain">
+    <div *ngIf="spots" class="contain"  (window:resize)="onResize($event)" >
 
-        <div class="spot ld ldt-fade-in" *ngFor="let spot of spots.results | paginate: {
+        <div id="spots-list" class="spot ld ldt-slide-right-in" *ngFor="let spot of spots.results | paginate: {
         itemsPerPage: maxSize,
         currentPage: pageNumber,
         totalItems: spots.rows }">

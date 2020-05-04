@@ -87,6 +87,11 @@ public class SpotController {
         return spotService.addComment(comment, id);
     }
     
+    @DeleteMapping("/private/comment/{id}")
+    public void deleteCommentById(@PathVariable("id") Long id){
+        spotService.deleteCommentById(id);
+    }
+    
     @GetMapping("/private/spot/{id}/like")
     public boolean isPostAlreadyLiked(@PathVariable Long id){
         return spotService.isPostAlreadyLiked(id);

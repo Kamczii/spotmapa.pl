@@ -5,8 +5,8 @@
  */
 package com.kamczi.controllers;
 
-import com.kamczi.imgur.BasicImgurResponse;
-import com.kamczi.imgur.DeleteBasicImgurResponse;
+import com.kamczi.responses.BasicImgurResponse;
+import com.kamczi.responses.DeleteBasicImgurResponse;
 import com.kamczi.services.ImgurService;
 import java.io.IOException;
 import java.util.List;

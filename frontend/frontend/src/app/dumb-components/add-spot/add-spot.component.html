@@ -1,5 +1,6 @@
+
 <div class=" creating-container ld ldt-fade-in ">
-  <form [formGroup]="creatingForm">
+  <form *ngIf="auth.isAuthenticated()" [formGroup]="creatingForm">
 
     <div #partone class="form-part">
       <legend><span class="number">1</span>Szczegóły</legend>
@@ -67,7 +68,7 @@
       <div class="row">
         <div class="col-sm-12 col-lg-12 col-xl-7">
 
-          <textarea class="form-input" type="text" formControlName="description" placeholder=""></textarea>
+          <textarea class="form-input" type="text" formControlName="description" placeholder="Jak tu jest ..."></textarea>
         </div>
         <div class="col-sm-12 col-lg-12 col-xl-5">
           <div *ngIf="submitted" class="ld loading-animation 
@@ -102,21 +103,4 @@
     </div>
   </form>
 </div>
-<div id="popup">
-  <div class="popup">
-    <div class="lds-default">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
-</div>
+<app-loading-spinner *ngIf="isLoading"></app-loading-spinner>

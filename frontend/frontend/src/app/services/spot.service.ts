@@ -56,6 +56,12 @@ export class SpotService {
     return this.http.delete<boolean>(environment.api_endpoint + '/private/spot/' + id + '/images/' + imgur_id);
   }
 
+  deleteComment(comment_id: number) {
+    return this.http.delete(environment.api_endpoint + '/private/comment/' + comment_id);
+  }
+  deleteSpot(spot_id: number) {
+    return this.http.delete(environment.api_endpoint + '/private/spot/' + spot_id);
+  }
   likeSpotById(id: number): Observable<boolean> {
     return this.http.post<boolean>(environment.api_endpoint + '/private/spot/' + id + '/like', {});
   }
@@ -82,4 +88,5 @@ export class SpotService {
     return this.http.get<Comment[]>(environment.api_endpoint + '/public/spot/' + id + '/comments');
   }
 
+  
 }

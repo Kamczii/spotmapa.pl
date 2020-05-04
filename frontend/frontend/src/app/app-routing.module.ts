@@ -16,11 +16,14 @@ import { UserEditGuardService } from './routeGuards/user-edit-guard.service';
 import { EditProfileComponent } from './dumb-components/edit-profile/edit-profile.component';
 import { ProfileComponentsContainerComponent } from './dumb-components/profile-components-container/profile-components-container.component';
 import { LastAddedComponent } from './components/last-added/last-added.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { AuthGuardService } from './routeGuards/auth-guard.service';
+import { NeedLoginComponent } from './dumb-components/need-login/need-login.component';
+import { PolicyComponent } from './dumb-components/policy/policy.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-
+  { path: '', component: HomeComponentComponent },
   { path: 'home', component: HomeComponentComponent },
   {
     path: 'profile', component: ProfileComponentsContainerComponent, children: [
@@ -29,22 +32,26 @@ const routes: Routes = [
     ]
   }
   ,
-  { path: 'last', component: LastAddedComponent },
+  { path: 'list', component: LastAddedComponent },
   {
     path: 'spots', component: SpotContainerComponent, children: [
-      { path: 'add-spot', component: AddSpotComponent },
+      { path: 'add-spot', component: AddSpotComponent, canActivate: [AuthGuardService]},
       { path: ':id', component: SpotComponent },
       { path: ':id/update', component: EditSpotComponent, canActivate: [IdBasedService] }
 
     ]
   },
+  {path:'login', component: NeedLoginComponent},
+  
+  { path: 'password-recovery', component: ForgotPasswordComponent},
   { path: 'map', component: SpotMapComponent },
+  {path:'policy',component: PolicyComponent},
   { path: '404', component: NotFoundComponent },
   { path: '**', redirectTo: '404' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  imports: [RouterModule.forRoot(routes, { useHash: false })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

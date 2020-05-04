@@ -84,6 +84,12 @@ public class AuthConfig extends WebSecurityConfigurerAdapter {
             .requiresSecure().and()
     // dont authenticate this particular request
     .authorizeRequests()
+            .antMatchers("/user/updatePassword*",
+                     "/user/savePassword*",
+                     "/updatePassword*")
+            .hasAuthority("CHANGE_PASSWORD_PRIVILEGE")
+            .antMatchers(HttpMethod.POST,"/public/user/resetPassword").permitAll()
+            .antMatchers(HttpMethod.POST,"/user/changePassword").permitAll()
             .antMatchers("/authenticate").permitAll()
             .antMatchers("/authenticate/facebook").permitAll()
             .antMatchers("/refresh-token").permitAll()

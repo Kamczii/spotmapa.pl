@@ -20,7 +20,6 @@ export class PhotoGalleryComponent implements AfterViewInit, OnInit {
 
   ngOnInit() {
     this.setImage(0);
-
   }
 
   ngAfterViewInit() {
@@ -63,4 +62,6 @@ export class PhotoGalleryComponent implements AfterViewInit, OnInit {
       this.currentImage--;
     this.image = this.images[this.currentImage];
   }
+
+
 }

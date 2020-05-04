@@ -1,6 +1,6 @@
-<nav class="position navbar navbar-default navbar-expand-lg navbar-dark">
+<nav  id="navbar" class="position navbar navbar-default navbar-expand-lg navbar-dark">
 	<div class="navbar-header d-flex col">
-		<a class="navbar-brand" href="#">Spot<b>Mapa</b></a>
+		<a class="navbar-brand ld ldt-slide-left-in" href="#">Spot<span>mapa.pl</span></a>
 		<button type="button" data-target="#navbarCollapse" data-toggle="collapse"
 			class="navbar-toggle navbar-toggler ml-auto">
 			<span class="navbar-toggler-icon"></span>
@@ -12,11 +12,10 @@
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
 		<ul class="nav navbar-nav">
-			<li class="nav-item"><a href="#" class="nav-link">Strona Główna</a></li>
-			<li class="nav-item"><a [routerLink]="['/map']" class="nav-link">Mapa</a></li>
-			<li class="nav-item"><a [routerLink]="['/last']" class="nav-link">Lista spotów</a></li>
-			<li *ngIf="auth.isAuthenticated()" class="nav-item"><a [routerLink]="['/spots/add-spot']"
-					class="nav-link">Dodaj spot</a></li>
+			<li class="nav-item" routerLinkActive="active"><a [routerLink]="['/home']" class="nav-link">Główna</a></li>
+			<li class="nav-item" routerLinkActive="active"><a [routerLink]="['/map']"   class="nav-link">Mapa</a></li>
+			<li class="nav-item" routerLinkActive="active"><a [routerLink]="['/list']" class="nav-link">Lista</a></li>
+			<li class="nav-item" routerLinkActive="active"><a [routerLink]="['/spots/add-spot']" class="nav-link">Dodaj</a></li>
 			<!-- <li class="nav-item dropdown">
 				<a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">Services <b class="caret"></b></a>
 				<ul class="dropdown-menu">					
@@ -27,7 +26,7 @@
 				</ul>
 			</li> -->
 		</ul>
-		<ul *ngIf="auth.isAuthenticated()" class="nav navbar-nav navbar-right ml-auto">
+		<ul *ngIf="auth.isAuthenticated()" class="nav navbar-nav navbar-right ml-auto ld ldt-slide-right-in">
 			<li *ngIf="profile" class="nav-item">
 				<a class="nav-link" [routerLink]="['/profile',profile.id]">
 					<img src="{{profile.avatar_url}}" /> {{profile.username}}</a>
@@ -36,7 +35,7 @@
 				<a class="nav-link" (click)="auth.logout()">Wyloguj</a>
 			</li>
 		</ul>
-		<ul *ngIf="!auth.isAuthenticated()" class="nav navbar-nav navbar-right ml-auto">
+		<ul *ngIf="!auth.isAuthenticated()" class="nav navbar-nav navbar-right ml-auto ld ldt-slide-right-in">
 			<li class="nav-item">
 				<a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">Logowanie</a>
 				<ul class="dropdown-menu form-wrapper ld ldt-grow-ttb">

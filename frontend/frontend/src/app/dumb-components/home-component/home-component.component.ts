@@ -18,9 +18,15 @@ export class HomeComponentComponent implements OnInit {
 
   spots: Spot[] = [];
 
+  isWideEnough: boolean = false;
   constructor(private spotService: SpotService) { }
 
   ngOnInit() {
+    document.getElementById('navbar').style.background = 'none';
+    window.addEventListener('scroll', this.scroll, true); //third parameter
+    const screenWidth = window.screen.width;
+    if(screenWidth>1300) 
+      this.isWideEnough=true;
     let so = new SearchOrder();
     so.fieldName = 'createdAt';
     so.orderType = 'DESC';
@@ -51,4 +57,13 @@ export class HomeComponentComponent implements OnInit {
     //   }
     // });
   }
+
+  ngOnDestroy() {
+    window.removeEventListener('scroll', this.scroll, true);
+    document.getElementById('navbar').style.background = '#08bdbd';
+}
+
+scroll = (event): void => {
+  document.getElementById('navbar').style.background = '#08bdbd';
+};
 }

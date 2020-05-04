@@ -1,23 +1,10 @@
-<div class="comment-wrapper col-sm-12">
-  <article class="row">
-    <div class="col-md-4 col-sm-12">
-      <figure class="thumbnail float-left">
-        <a [routerLink]="['/profile', comment.author.user_id]">
-          <img class="img-responsive" src="{{comment.author.avatar.link}}" />
-          <figcaption class="text-center">{{comment.author.username}}</figcaption>
-        </a>
-      </figure>
-    </div>
-    <div class="col-md-8 col-sm-12">
-      <div class="panel">
-        <div class="comment-header">
-          <i class="fa fa-clock-o"></i> {{comment.date | date: 'dd-MM-yyyy, HH:mm'}}<span class="edited"
-            title="{{comment.edited_at | date: 'dd-MM-yyyy HH:mm'}}" *ngIf="comment.edited_at"> Edited</span>
-        </div>
-        <div class="comment-content">
-          {{comment.comment}}
-        </div>
-      </div>
-    </div>
-  </article>
+
+
+<div class="media mb-4 ld ldt-fade-in ">
+  <a [routerLink]="['/profile/',comment.author.user_id]"><img class="d-flex mr-3" src="{{comment.author.avatar.link}}" alt=""></a>
+  <div class="media-body">
+    <h5 class="mt-0"><a [routerLink]="['/profile/',comment.author.user_id]">{{comment.author.username}}</a><button *ngIf="canEdit" (click)="delete()"><i class="fa fa-times"></i></button></h5>
+    {{comment.comment}}
+    <p>{{comment.date | date: 'dd.MM.yyyy'}}</p>
+  </div>
 </div>

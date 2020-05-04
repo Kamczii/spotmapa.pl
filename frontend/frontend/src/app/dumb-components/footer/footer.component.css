@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Lora&display=swap');
 .footer{
     width: 100%;
-    background: var(--black-color);
+    background: var(--white-color);
     color: var(--secondary-color);
     padding: 6px 12px;
     font-size: 14px;

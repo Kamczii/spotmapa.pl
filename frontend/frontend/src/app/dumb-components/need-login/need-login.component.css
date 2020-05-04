@@ -1,0 +1,17 @@
+.login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.login h2{
+    color: var(--secondary-color);
+}
+hr{
+    
+}

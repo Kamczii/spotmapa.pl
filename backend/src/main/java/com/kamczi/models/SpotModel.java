@@ -21,7 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class SpotModel {
     
     private Long id;
-    private User user;
+    private UserModel user;
     private SpotType spotType;
     private String name;
     private Date created_at;
@@ -32,6 +32,7 @@ public class SpotModel {
     private Short security;
     private Double lng;
     private Double lat;
+    
     List<MultipartFile> files;
     
     private List<ImageModel> images = new ArrayList();
@@ -39,7 +40,10 @@ public class SpotModel {
     
     public SpotModel(Spot spot){
            this.id = spot.getSpot_id();
-           this.user = spot.getAuthor();
+           this.user = new UserModel();
+           this.user.setAvatar_url(spot.getAuthor().getAvatar().getLink());
+           this.user.setId(spot.getAuthor().getUser_id());
+           this.user.setUsername(spot.getAuthor().getUsername());
            this.spotType = spot.getSpotType();
            this.created_at = spot.getCreatedAt();
            this.description = spot.getDescription();
@@ -56,6 +60,7 @@ public class SpotModel {
             }
     }
 
+    
     public List<MultipartFile> getFiles() {
         return files;
     }
@@ -73,11 +78,11 @@ public class SpotModel {
         this.id = id;
     }
 
-    public User getUser() {
+    public UserModel getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserModel user) {
         this.user = user;
     }
 

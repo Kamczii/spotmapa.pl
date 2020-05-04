@@ -18,8 +18,8 @@ export class SpotsListComponent implements OnInit {
   maxSize: number = 8;
 
   sc: BaseSearchCriteria = new BaseSearchCriteria();
-  title: String = "Spoty";
-
+  
+  @Input() title: String = "Wszystkie";
   @Input() spots: PageWrapper<Spot> = new PageWrapper<Spot>();
   @Input() showSorting = true;
 
@@ -55,12 +55,16 @@ export class SpotsListComponent implements OnInit {
 
   howManySpots() {
     const screenWidth = window.screen.width;
-    let count = screenWidth / 300;
-
+    let count = Math.floor(screenWidth/300);
+    
     if (count < 2) {
       this.maxSize = 8;
     } else {
       this.maxSize = count;
     }
+  }
+
+  onResize(event) {
+    window.location.reload();
   }
 }

@@ -32,6 +32,7 @@ export class EditSpotComponent implements OnInit {
   addedSpot = '';
 
   maxFileSizeInBytes = 1048576;
+  isLoading: boolean = false;
 
   constructor(private fb: FormBuilder, private spotService: SpotService, private route: ActivatedRoute, private router: Router) { }
 
@@ -86,7 +87,7 @@ export class EditSpotComponent implements OnInit {
   updateSpot() {
 
     this.submitted = true;
-
+    this.isLoading = true;
     // stop here if form is invalid
     if (this.creatingForm.invalid || this.marker == null) {
       return;
@@ -108,8 +109,6 @@ export class EditSpotComponent implements OnInit {
       }
     }
 
-    document.getElementById("popup").style.display = 'flex';
-    document.getElementById("popup").style.opacity = '1';
     this.spotService.updatePost(spot, this.spotID).subscribe(added => {
 
       if (files.length > 0) {
@@ -128,10 +127,8 @@ export class EditSpotComponent implements OnInit {
     this.urls = [];
     this.files = [];
     this.submitted = false;
-
+    this.isLoading = false;
     this.addedSpot = name;
-    document.getElementById("popup").style.opacity = '0';
-    document.getElementById("popup").style.display = 'none';
 
     this.router.navigate(['/spots/' + spot_id]);
   }

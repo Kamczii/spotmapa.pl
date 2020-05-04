@@ -70,7 +70,14 @@
 .right-arrow button:hover, .left-arrow button:hover{
   opacity: 1;
   color: var(--main-color);
+  transition: all .1s;
 }
+.right-arrow button:active, .left-arrow button:active{
+  animation: gradient 10ms;
+  transform: scale(1.5);
+  box-shadow: none;
+}
+
 .right-arrow{
   right:1vw;
 }
@@ -79,10 +86,17 @@
 }
 .demo-gallery > ul > li {
     float: left;
-    width: 100%;
+    width: 25%;
+    height: 150px;
+    box-sizing: border-box;
 }
+@media only screen and (max-width: 768px) {
+  .demo-gallery > ul > li {
+    width: 100%;
+  }
+}
+
 .demo-gallery > ul > li a { 
-    border: 5px solid var(--black-color);
   border-radius: 3px;
   display: block;
   overflow: hidden;
@@ -96,8 +110,9 @@
   transition: transform 0.15s ease 0s;
   -webkit-transform: scale3d(1, 1, 1);
   transform: scale3d(1, 1, 1);
-  height: 100%;
+  object-fit: cover;
   width: 100%;
+  height: 150px;
 }
 .demo-gallery > ul > li a:hover > img {
   -webkit-transform: scale3d(1.1, 1.1, 1.1);
@@ -138,8 +153,6 @@
   transition: transform 0.15s ease 0s;
   -webkit-transform: scale3d(1, 1, 1);
   transform: scale3d(1, 1, 1);
-  height: 100%;
-  width: 100%;
 }
 .demo-gallery .justified-gallery > a:hover > img {
   -webkit-transform: scale3d(1.1, 1.1, 1.1);

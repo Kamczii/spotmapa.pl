@@ -5,6 +5,7 @@ import { Spot } from 'src/app/models/spot';
 import { SpotService } from 'src/app/services/spot.service';
 import { } from 'googlemaps';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-add-spot',
@@ -31,8 +32,9 @@ export class AddSpotComponent implements OnInit {
   addedSpot = '';
 
   maxFileSizeInBytes = 1048576;
+  isLoading: boolean = false;
 
-  constructor(private fb: FormBuilder, private spotService: SpotService, private router: Router) { }
+  constructor(public auth: AuthService, private fb: FormBuilder, private spotService: SpotService, private router: Router) { }
 
   ngOnInit() {
     this.createForm();
@@ -69,7 +71,7 @@ export class AddSpotComponent implements OnInit {
   addSpot() {
 
     this.submitted = true;
-
+    this.isLoading = true;
     // stop here if form is invalid
     if (this.creatingForm.invalid || this.marker == null) {
       return;
@@ -109,9 +111,7 @@ export class AddSpotComponent implements OnInit {
     this.urls = [];
     this.files = [];
     this.submitted = false;
-
-    document.getElementById("popup").style.opacity = '0';
-    document.getElementById("popup").style.display = 'none';
+    this.isLoading = false;
 
     this.router.navigate(['/spots/' + spot_id]);
   }

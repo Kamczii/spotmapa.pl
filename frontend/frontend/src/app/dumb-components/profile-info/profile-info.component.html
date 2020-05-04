@@ -1,29 +1,40 @@
-<div class="main-container">
+<div  class="container">
+
     <div class="row">
-        <div class="col-xl-3 col-sm-12">
+        <div class="col-lg-4">
 
-        </div>
-        <div class="col-xl-6 col-sm-12">
-            <div *ngIf="user" class="row">
-                <div class="col-sm-12 col-xl-6">
-                    <div class="profile">
-                        <img src="{{user.avatar_url}}">
-                        <h1>{{user.username}}</h1>
-                        <p *ngIf="user.description">{{user.description}}</p>
-
-                        <p class="detail-info" *ngIf="spots">Dodał {{spots.rows}} spotów</p>
-                        <p class="detail-info">Z nami od {{user.created_at | date: 'dd.MM.yyyy'}}</p>
-                        <p class="detail-info" *ngIf="isUserOwningProfile"><a [routerLink]="['update']">Edytuj</a></p>
-                    </div>
-                </div>
-
-                <div class="spots col-sm-12 col-xl-6">
-                    <app-spots-list [showSorting]="false" [spots]="spots" (emitter)="getSpots()"></app-spots-list>
+            <div class="card  ld ldt-slide-left-in">
+                <div class="card-body profile">
+                
+                        <div *ngIf="user" class="profile">
+                            <img src="{{user.avatar_url}}">
+                            <h1>{{user.username}}</h1>
+                            <div class="info">
+                                <p *ngIf="user.description">{{user.description}}</p>
+                                <p class="detail-info" *ngIf="spots&&spots.rows==0">Nie dodał żadnych spotów</p>
+                                <p class="detail-info" *ngIf="spots&&spots.rows==1">Dodał 1 spot</p>
+                                <p class="detail-info" *ngIf="spots&&spots.rows<=4&&spots.rows>1">Dodał {{spots.rows}} spoty</p>
+                                <p class="detail-info" *ngIf="spots&&spots.rows>4">Dodał {{spots.rows}} spotów</p>
+                                <p class="detail-info">Z nami od {{user.created_at | date: 'dd.MM.yyyy'}}</p>
+                                <p class="detail-info" *ngIf="isUserOwningProfile"><a [routerLink]="['update']">Edytuj</a></p>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-sm-12">
-
+        <div class="col-lg-8">
+            
+            <div class="card ld ldt-slide-top-in">
+                <div *ngIf="spots" class="card-body">
+                    <div *ngIf="spots.rows>0" class="spots">
+                        <h2>Spoty użytkownika {{user.username}}</h2>
+                        <app-spots-list [showSorting]="false" [spots]="spots" (emitter)="getSpots()"></app-spots-list>
+                    </div>
+                    <div *ngIf="spots.rows==0">
+                        <h2>Brak spotów do wyświetlenia</h2>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+  </div>
+  </div>

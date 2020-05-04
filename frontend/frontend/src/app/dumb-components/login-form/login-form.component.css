@@ -1,3 +1,6 @@
+.hint-text{
+    color: var(--secondary-color)
+}
 a.fb {
     width: 100%;
     font-family: Lucida Grande, Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -12,7 +15,9 @@ a.fb {
     position: relative;
     border-radius: 5px;
 }
-
+a{
+    color: var(--secondary-color)
+}
 .connect:before {
     display: inline-block;
     position: relative;
@@ -37,8 +42,11 @@ a:hover.fb{
 
 input[type="text"],input[type="email"],input[type="password"] {
     padding: 15px;
+    border: 3px solid var(--secondary-color);
 }
-
+input:focus{ 
+    border-color: var(--main-color);
+  }
 .form-footer{
     margin: 8px 0;
 }

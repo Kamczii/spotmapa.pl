@@ -7,12 +7,13 @@
   textarea{
     padding: 10px;
     border-radius: 5px;
-    border: 2px solid var(--secondary-color);
+    border: 4px solid var(--secondary-color);
+    transition: border .5s;
     width: 100%;
   }
   
   textarea:focus{
-    border-color: var(--secondary-color);
+    border-color: var(--main-color);
   }
   .submit{
     text-align: right;
@@ -31,3 +32,9 @@
     opacity: .8;
   }
   
+.card{
+  background: var(--white-color);
+}
+button{
+  float:right;
+}

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { SpotService } from 'src/app/services/spot.service';
 import { Spot } from 'src/app/models/spot';
 import { AuthService } from 'src/app/services/auth.service';
+import { BaseSearchCriteria } from 'src/app/criteria/BaseSearchCrtieria';
 
 @Component({
   selector: 'app-spot',
@@ -19,9 +20,11 @@ export class SpotComponent implements OnInit {
   @ViewChild('map', { static: false })
   mapElement: any;
   map: google.maps.Map;
-  marker: any;
+  markers: any[];
 
   currentFragmet = 'info';
+
+  additionalSpots: Spot[];
 
   constructor(private auth: AuthService, private spotService: SpotService, private route: ActivatedRoute, private router: Router) {
 
@@ -32,33 +35,39 @@ export class SpotComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
+      
       this.spot_id = params['id'];
       this.spotService.getSpotById(this.spot_id).subscribe(spot => {
         this.spot = spot;
-        if (spot.user.user_id == this.auth.getUserId())
+        if (spot.user.id == this.auth.getUserId())
           this.isUserOwningPost = true;
-        let clickedLocation = new google.maps.LatLng(this.spot.lat, this.spot.lng);
-        this.marker = new google.maps.Marker({
-          position: clickedLocation,
+        let location = new google.maps.LatLng(this.spot.lat, this.spot.lng);
+        this.markers = [];
+        this.markers.push(new google.maps.Marker({
+          position: location,
           map: this.map
-        });
+        })) ;
+        this.map.setCenter(location);
         this.checkIfSpotIsLiked();
-        const center = new google.maps.LatLng(this.spot.lat, this.spot.lng);
 
-        this.map.panTo(center);
+        // let sc = new BaseSearchCriteria();
+        // sc.pageNumber=0;
+        // sc.maxResults=3;
+        // this.spotService.getAllPosts(sc).subscribe(data => this.additionalSpots = data.results);
       });
     });
+
 
   }
 
   ngAfterViewInit() {
     const mapProperties = {
       center: new google.maps.LatLng(53.131410, 18.002468),
-      zoom: 10,
+      zoom: 12,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapProperties);
-
+    
 
   }
 
@@ -113,5 +122,10 @@ export class SpotComponent implements OnInit {
 
   isAuthenticated() {
     return this.auth.isAuthenticated();
+  }
+
+  deleteSpot(){
+    if(confirm("Czy na pewno chcesz usunąć post?"))
+      this.spotService.deleteSpot(this.spot.id).subscribe(data => this.router.navigate(['/profile/',this.spot.user.id]));
   }
 }

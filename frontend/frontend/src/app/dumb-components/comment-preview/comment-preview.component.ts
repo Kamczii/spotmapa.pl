@@ -1,5 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Comment } from '../../models/comment';
+import { AuthService } from 'src/app/services/auth.service';
+import { SpotService } from 'src/app/services/spot.service';
 
 @Component({
   selector: 'app-comment-preview',
@@ -9,10 +11,19 @@ import { Comment } from '../../models/comment';
 export class CommentPreviewComponent implements OnInit {
 
   @Input() comment: Comment;
-
-  constructor() { }
+  @Output() refreshComments = new EventEmitter();
+  canEdit: boolean = false;
+  constructor(private auth: AuthService, private spotService: SpotService) { }
 
   ngOnInit() {
+    console.log(this.comment.author.user_id+" "+this.auth.getUserId())
+    if(this.comment.author.user_id==this.auth.getUserId())
+      this.canEdit = true;
   }
 
+  delete(){
+    if (confirm('Czy na pewno chcesz usunąć komentarz?')) {
+      this.spotService.deleteComment(this.comment.comment_id).subscribe(data => this.refreshComments.emit(''))
+    }
+  }
 }
