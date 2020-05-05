@@ -7,7 +7,7 @@ export class Spot {
     spotType: SpotType;
     name: string;
     created_at: Date;
-    edited_at: Date;
+    updated_at: Date;
     description: string;
     likes: number;
     comments: number;

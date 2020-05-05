@@ -42,7 +42,6 @@ export class EditSpotComponent implements OnInit {
     this.route.params.subscribe(params => this.spotService.getSpotById(params.id).subscribe(data => {
       this.spotID = params.id;
       this.spot = data;
-      console.log(this.spot.images)
       this.creatingForm.controls['name'].setValue(data.name);
       this.creatingForm.controls['type'].setValue(data.spotType);
       let clickedLocation = new google.maps.LatLng(data.lat, data.lng);
@@ -52,7 +51,6 @@ export class EditSpotComponent implements OnInit {
         draggable: true //make it draggable
       });
       this.creatingForm.controls['description'].setValue(data.description);
-      console.log(data)
     }));
   }
 
@@ -87,12 +85,12 @@ export class EditSpotComponent implements OnInit {
   updateSpot() {
 
     this.submitted = true;
-    this.isLoading = true;
     // stop here if form is invalid
     if (this.creatingForm.invalid || this.marker == null) {
       return;
     }
 
+    this.isLoading = true;
     let spot = new Spot();
     spot.name = this.creatingForm.controls['name'].value;
     spot.description = this.creatingForm.controls['description'].value;

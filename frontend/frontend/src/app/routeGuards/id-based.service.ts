@@ -15,9 +15,8 @@ export class IdBasedService implements CanActivate {
     const spotId = route.params['id'];
     this.spotService.getSpotById(spotId).subscribe(data => {
       const spot = data;
-      const expectedId = spot.user.user_id;
+      const expectedId = spot.user.id;
       const id = this.authService.getUserId();
-      // decode the token to get its payload
       if (
         !this.auth.isAuthenticated() ||
         id !== expectedId

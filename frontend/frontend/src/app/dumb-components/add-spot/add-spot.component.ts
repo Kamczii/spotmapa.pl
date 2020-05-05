@@ -71,12 +71,12 @@ export class AddSpotComponent implements OnInit {
   addSpot() {
 
     this.submitted = true;
-    this.isLoading = true;
     // stop here if form is invalid
     if (this.creatingForm.invalid || this.marker == null) {
       return;
     }
 
+    this.isLoading = true;
     let spot = new Spot();
     spot.name = this.creatingForm.controls['name'].value;
     spot.description = this.creatingForm.controls['description'].value;
