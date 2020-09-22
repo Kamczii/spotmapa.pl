@@ -31,7 +31,7 @@ public class Avatar {
         private String link = CONSTANTS.DEFAULT_AVATAR_LINK;
         @OneToOne(mappedBy = "avatar")
         @JsonIgnore
-        private User user;
+        private Person user;
 
     public Long getImage_id() {
         return image_id;
@@ -65,11 +65,11 @@ public class Avatar {
         this.link = link;
     }
 
-    public User getUser() {
+    public Person getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Person user) {
         this.user = user;
     }
 

@@ -43,7 +43,6 @@ export class SpotService {
 
   addImagesToSpot(id: number, images: File[]) {
     let headers = new HttpHeaders();
-    console.log(images)
     headers.append("cache-control", "no-cache");
     let file = new FormData();
     for (let image of images) {

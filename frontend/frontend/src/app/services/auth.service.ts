@@ -59,7 +59,6 @@ export class AuthService {
   }
 
   public refreshAccessToken() {
-    console.log('refreshing token')
     return this.http.get<any>(environment.api_endpoint + '/refresh-token');
   }
 

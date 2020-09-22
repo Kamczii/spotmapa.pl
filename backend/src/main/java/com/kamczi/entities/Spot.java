@@ -42,8 +42,7 @@ public class Spot {
     private Date editedAt;
     @ManyToOne
     @JoinColumn(name="user_id")
-    private User author;
-    @Column(columnDefinition = "LONGTEXT")
+    private Person author;
     private String description;
     @OneToMany(mappedBy="spot")
     @JsonIgnore
@@ -108,11 +107,11 @@ public class Spot {
         this.editedAt = editedAt;
     }
 
-    public User getAuthor() {
+    public Person getAuthor() {
         return author;
     }
 
-    public void setAuthor(User author) {
+    public void setAuthor(Person author) {
         this.author = author;
     }
 

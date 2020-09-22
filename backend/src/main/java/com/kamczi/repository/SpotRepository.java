@@ -6,7 +6,7 @@
 package com.kamczi.repository;
 
 import com.kamczi.entities.Spot;
-import com.kamczi.entities.User;
+import com.kamczi.entities.Person;
 import com.kamczi.enums.SpotType;
 import java.util.List;
 import org.springframework.data.domain.Pageable;
@@ -21,7 +21,7 @@ public interface SpotRepository extends PagingAndSortingRepository<Spot, Long> {
     List<Spot> findBySpotType(SpotType spotType, Pageable pageable);
     List<Spot> findBySpotType(SpotType spotType);
 
-    List<Spot> findByAuthor(User user, Pageable pageable);
+    List<Spot> findByAuthor(Person user, Pageable pageable);
 
-    List<Spot> findByAuthor(User user);
+    List<Spot> findByAuthor(Person user);
 }

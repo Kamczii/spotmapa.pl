@@ -32,7 +32,7 @@ public class Image {
     @ManyToOne
     @JoinColumn(name="user_id")
     @JsonIgnore
-    private User user;
+    private Person user;
     
     @JsonIgnore
     private String imgurId;
@@ -83,11 +83,11 @@ public class Image {
         this.spot = spot;
     }
 
-    public User getUser() {
+    public Person getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Person user) {
         this.user = user;
     }
     

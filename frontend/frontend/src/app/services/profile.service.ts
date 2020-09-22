@@ -42,7 +42,6 @@ export class ProfileService {
   }
   checkIfUserContent(path_id: number) {
 
-    console.log(path_id + ' ' + this.auth.getUserId())
     if (this.auth.isAuthenticated()) {
       if (path_id == this.auth.getUserId())
         return true;

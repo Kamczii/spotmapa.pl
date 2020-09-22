@@ -30,25 +30,21 @@ export class RegisterFormComponent implements OnInit {
   }
 
   register() {
-    console.log("Sub")
     this.submitted = true;
 
     // stop here if form is invalid
     if (this.registerForm.invalid || this.emailExist || this.nicknameExist) {
-      console.log("E")
       return;
     }
     const email = this.registerForm.controls['email'].value;
     const username = this.registerForm.controls['username'].value;
     const password = this.registerForm.controls['password'].value;
     this.auth.register(email, username, password).subscribe(data => {
-      const id = data.id;
       let creds = new Credentials();
       creds.password = password;
       creds.username = username;
       this.auth.login(creds).subscribe(resp => {
         this.auth.handleAuthentication(resp.token);
-        this.router.navigateByUrl('/user/' + id + '/details');
         this.checkAuthEvent.emit("emitter");
       })
     });
@@ -80,10 +76,8 @@ export class RegisterFormComponent implements OnInit {
 
   facebookRegister() {
     FB.login((response) => {
-      console.log('submitLogin', response);
       if (response.authResponse) {
         this.auth.registerFacebook(response.authResponse.accessToken).subscribe(data => {
-          console.log("Register complete");
           this.auth.loginFacebook(response.authResponse.accessToken);
         });
       }

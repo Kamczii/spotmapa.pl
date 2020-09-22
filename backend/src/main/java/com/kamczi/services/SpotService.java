@@ -10,7 +10,7 @@ import com.kamczi.entities.Comment;
 import com.kamczi.entities.Image;
 import com.kamczi.entities.Spot;
 import com.kamczi.entities.SpotLikes;
-import com.kamczi.entities.User;
+import com.kamczi.entities.Person;
 import com.kamczi.enums.SpotType;
 import com.kamczi.exceptions.SpotNotFoundException;
 import com.kamczi.models.CommentModel;
@@ -104,7 +104,7 @@ public class SpotService {
     
     public Comment addComment(CommentModel comment, Long post_id){
         Spot post = spotRepo.findById(post_id).get();
-        User user = userService.getCurrentUser();
+        Person user = userService.getCurrentUser();
         Comment entity = new Comment();
         entity.setAuthor(user);
         entity.setSpot(post);
@@ -122,7 +122,7 @@ public class SpotService {
     
     
     public Spot addPost(SpotModel model){
-        User user = userService.getCurrentUser();
+        Person user = userService.getCurrentUser();
         SpotType spotType = model.getSpotType();
         Spot post = new Spot();
         post.setDescription(model.getDescription());
@@ -164,7 +164,7 @@ public class SpotService {
     }
     
     public PageWrapper<SpotModel> getPostsByUserId(Long id, Pageable pageable) {
-        User user = userRepo.findById(id).get();
+        Person user = userRepo.findById(id).get();
         List<Spot> posts = spotRepo.findByAuthor(user, pageable);
         List<SpotModel> models = new ArrayList<>();
         
@@ -195,7 +195,7 @@ public class SpotService {
         return commentRepo.findById(id).get();
     }
     public boolean isPostAlreadyLiked(Long id){
-        User user = userService.getCurrentUser();
+        Person user = userService.getCurrentUser();
         Spot post = spotRepo.findById(id).get();
         SpotLikes like = likeRepo.findBySpotAndUser(post, user);
         

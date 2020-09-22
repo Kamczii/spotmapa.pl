@@ -26,7 +26,7 @@ public class SpotLikes {
     private Spot spot;
     @ManyToOne
     @JoinColumn(name="user_id")
-    private User user;
+    private Person user;
 
     public Long getId() {
         return id;
@@ -44,11 +44,11 @@ public class SpotLikes {
         this.spot = spot;
     }
 
-    public User getUser() {
+    public Person getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Person user) {
         this.user = user;
     }
     

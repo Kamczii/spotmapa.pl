@@ -125,7 +125,7 @@ export class MyHammerConfig extends HammerGestureConfig {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        whitelistedDomains: ['localhost:8080', '192.168.1.2:8080', 's41.mydevil.net:38501', 'spotmapa.pl', 'kamil123.usermd.net', 'localhost:8443']
+        whitelistedDomains: ['localhost:8080', '192.168.1.2:8080', 's41.mydevil.net:38501', 'spotmapa.pl', 'kamil123.usermd.net', 'localhost:8443','vast-ocean-93199.herokuapp.com']
       }
     })
   ],

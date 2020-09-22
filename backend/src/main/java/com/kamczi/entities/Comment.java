@@ -31,7 +31,7 @@ public class Comment {
     @ManyToOne
     @JoinColumn(name="user_id")
     @JsonIgnore
-    private User author;
+    private Person author;
     @Column(columnDefinition = "TEXT")
     private String comment;
     private Date date;
@@ -53,11 +53,11 @@ public class Comment {
         this.spot = spot;
     }
 
-    public User getAuthor() {
+    public Person getAuthor() {
         return author;
     }
 
-    public void setAuthor(User author) {
+    public void setAuthor(Person author) {
         this.author = author;
     }
 

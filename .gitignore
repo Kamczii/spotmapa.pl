@@ -1,5 +1,7 @@
 *.properties
-frontend/frontend/dist/frontend
+frontend/frontend/dist
+fronted/frontend/e2e
+frontend/frontend/.firebase
 backend/target
 backend/src/main/resources
 server

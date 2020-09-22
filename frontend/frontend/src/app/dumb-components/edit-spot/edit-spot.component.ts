@@ -147,7 +147,6 @@ export class EditSpotComponent implements OnInit {
   onSelectFile(event) {
 
     let files = event.srcElement.files;
-    console.log(files)
 
     if (event.target.files && event.target.files[0]) {
       var filesAmount = event.target.files.length;
@@ -157,14 +156,12 @@ export class EditSpotComponent implements OnInit {
           var reader = new FileReader();
 
           reader.onload = (event: any) => {
-            console.log(event.target);
             this.urls.push(event.target.result);
           }
 
           reader.readAsDataURL(event.target.files[i]);
 
           this.filesToUpload.push(event.target.files[i]);
-          console.log(this.filesToUpload)
         }
 
         else
@@ -190,7 +187,6 @@ export class EditSpotComponent implements OnInit {
   remove(i) {
     this.urls[i] = null;
     this.idsToDelete.push(i);
-    console.log(this.idsToDelete)
   }
 
   checkSize(fileSize, size) {

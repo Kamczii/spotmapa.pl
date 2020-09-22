@@ -7,7 +7,7 @@ package com.kamczi.models;
 
 import com.kamczi.entities.Image;
 import com.kamczi.entities.Spot;
-import com.kamczi.entities.User;
+import com.kamczi.entities.Person;
 import com.kamczi.enums.SpotType;
 import java.util.ArrayList;
 import java.util.Date;

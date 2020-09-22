@@ -7,7 +7,7 @@ package com.kamczi.repository;
 
 import com.kamczi.entities.Spot;
 import com.kamczi.entities.SpotLikes;
-import com.kamczi.entities.User;
+import com.kamczi.entities.Person;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -16,6 +16,6 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface LikeRepository extends CrudRepository<SpotLikes, Long> {
     void deleteBySpot(Spot spot);
-    SpotLikes findBySpotAndUser(Spot spot, User user);
-    long deleteBySpotAndUser(Spot spot, User user);
+    SpotLikes findBySpotAndUser(Spot spot, Person user);
+    long deleteBySpotAndUser(Spot spot, Person user);
 }

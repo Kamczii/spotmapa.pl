@@ -68,8 +68,8 @@ public class AuthConfig extends WebSecurityConfigurerAdapter {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.applyPermitDefaultValues();
         configuration.addExposedHeader(HEADER_STRING);
-        configuration.setAllowedMethods(Arrays.asList("POST","GET","PUT","DELETE"));
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200","https://localhost:4200","https://spotmapa.pl"));
+        configuration.setAllowedMethods(Arrays.asList("POST","GET","PUT","DELETE","OPTIONS"));
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200","https://localhost:4200","https://spotmapa.pl","https://spotmapa.web.app"));
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
@@ -79,9 +79,6 @@ public class AuthConfig extends WebSecurityConfigurerAdapter {
     // We don't need CSRF for this example
     httpSecurity.cors().and().csrf().disable()
             //https
-            .requiresChannel()
-            .anyRequest()
-            .requiresSecure().and()
     // dont authenticate this particular request
     .authorizeRequests()
             .antMatchers("/user/updatePassword*",

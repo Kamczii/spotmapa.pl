@@ -6,7 +6,7 @@
 package com.kamczi.models;
 
 import com.kamczi.entities.Comment;
-import com.kamczi.entities.User;
+import com.kamczi.entities.Person;
 import java.util.Date;
 
 /**
@@ -18,7 +18,7 @@ public class CommentModel {
     private String comment;
     private Date date;
     private Date edited_at;
-    private User author;
+    private Person author;
     
     public CommentModel(){}
     
@@ -30,11 +30,11 @@ public class CommentModel {
         this.edited_at = comment.getEdited_at();
     }
 
-    public User getAuthor() {
+    public Person getAuthor() {
         return author;
     }
 
-    public void setAuthor(User author) {
+    public void setAuthor(Person author) {
         this.author = author;
     }
     

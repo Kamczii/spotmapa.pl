@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api_endpoint: 'https://kamil123.usermd.net/spotmap-api',
+  api_endpoint: 'https://vast-ocean-93199.herokuapp.com',
 };

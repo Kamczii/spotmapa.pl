@@ -16,7 +16,6 @@ export class CommentPreviewComponent implements OnInit {
   constructor(private auth: AuthService, private spotService: SpotService) { }
 
   ngOnInit() {
-    console.log(this.comment.author.user_id+" "+this.auth.getUserId())
     if(this.comment.author.user_id==this.auth.getUserId())
       this.canEdit = true;
   }

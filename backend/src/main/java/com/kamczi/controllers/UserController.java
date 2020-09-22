@@ -6,7 +6,7 @@
 package com.kamczi.controllers;
 
 import com.kamczi.colletctions.PageWrapper;
-import com.kamczi.entities.User;
+import com.kamczi.entities.Person;
 import com.kamczi.exceptions.UserNotFoundException;
 import com.kamczi.models.PasswordModel;
 import com.kamczi.models.UserModel;
@@ -56,12 +56,12 @@ public class UserController {
     private MessageSource messages;
      
     @PostMapping("/public/users/sign-up")
-    public User signUp(@RequestBody User user){
+    public Person signUp(@RequestBody Person user){
         return userService.signUp(user);
     }
     
     @PostMapping("/public/users/sign-up/facebook")
-    public User signUpFacebook(@RequestBody String token){
+    public Person signUpFacebook(@RequestBody String token){
         return userService.signUpFacebook(token);
     }
     
@@ -102,14 +102,14 @@ public class UserController {
     
     @PutMapping("/private/user/update")
     public @ResponseBody UserModel updateUser(@RequestBody UserModel model){
-        User user = userService.updateUser(model);
+        Person user = userService.updateUser(model);
         return new UserModel(userRepository.save(user));
     }
     
     
     @DeleteMapping("/private/user/{id}")
     public void deleteUser(@PathVariable long id){
-        User user = userRepository.findById(id).orElseThrow(() ->  new UserNotFoundException(id));
+        Person user = userRepository.findById(id).orElseThrow(() ->  new UserNotFoundException(id));
         userRepository.delete(user);
     }
     
@@ -125,7 +125,7 @@ public class UserController {
     
     @PostMapping("/public/user/resetPassword")
     public GenericResponse resetPassword(HttpServletRequest request, @RequestParam("email") String userEmail) throws MessagingException{
-    User user = userService.findUserByEmail(userEmail);
+    Person user = userService.findUserByEmail(userEmail);
     if (user == null) {
         String error = messages.getMessage("message.emailNotExist", null, request.getLocale());
         return new GenericResponse("", error);
@@ -146,8 +146,8 @@ public class UserController {
     @PostMapping("/user/savePassword")
     public GenericResponse savePassword(Locale locale, 
       PasswordModel passwordDto) {
-        User user = 
-          (User) SecurityContextHolder.getContext()
+        Person user = 
+          (Person) SecurityContextHolder.getContext()
                                       .getAuthentication().getPrincipal();
 
         userService.changeUserPassword(user, passwordDto.getNewPassword());
@@ -163,8 +163,8 @@ public class UserController {
             GenericResponse response = new GenericResponse(messages.getMessage("auth.message." + result, null, locale));
             return response;
         }
-        User user = 
-          (User) SecurityContextHolder.getContext()
+        Person user = 
+          (Person) SecurityContextHolder.getContext()
                                       .getAuthentication().getPrincipal();
         
         userService.changeUserPassword(user,password.getNewPassword());

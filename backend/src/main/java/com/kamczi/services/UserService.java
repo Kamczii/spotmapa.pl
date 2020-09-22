@@ -8,7 +8,7 @@ package com.kamczi.services;
 import com.kamczi.colletctions.PageWrapper;
 import com.kamczi.entities.Avatar;
 import com.kamczi.entities.PasswordResetToken;
-import com.kamczi.entities.User;
+import com.kamczi.entities.Person;
 import com.kamczi.enums.AuthProvider;
 import com.kamczi.exceptions.EmailAlreadyExistsException;
 import com.kamczi.exceptions.EmptyEmailException;
@@ -70,7 +70,7 @@ public class UserService {
     @Autowired
     JavaMailSender mailSender;
 
-    public User signUp(User user){
+    public Person signUp(Person user){
         
         
         if(isNicknameAlreadyExists(user.getUsername()))
@@ -85,7 +85,7 @@ public class UserService {
         return userRepository.save(user);
     }
     
-    public User signUpFacebook(String access_token) {
+    public Person signUpFacebook(String access_token) {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "Bearer "+ access_token);
         HttpEntity<byte[]> requestEntity = new HttpEntity<>(headers);
@@ -93,7 +93,7 @@ public class UserService {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("https://graph.facebook.com"+"/me?fields=id,name,email,picture.type(large)");
         ResponseEntity<FacebookUserResponse> response = restTemplate.exchange(builder.toUriString(), HttpMethod.GET, requestEntity, FacebookUserResponse.class);
         if(response.getStatusCode() == HttpStatus.OK){
-            User user = new User();
+            Person user = new Person();
             user.setEmail(response.getBody().getEmail());
             user.setUsername(response.getBody().getName());
             user.setCreated_at(new Date());
@@ -108,9 +108,9 @@ public class UserService {
     }
     
     public PageWrapper<UserModel> getListsOfUsers(@PageableDefault(page = 0, size = Integer.MAX_VALUE) Pageable pageable){
-        Page<User> users =  userRepository.findAll(pageable);
+        Page<Person> users =  userRepository.findAll(pageable);
         List<UserModel> userModels = new ArrayList<>();
-        for(User user: users){
+        for(Person user: users){
             userModels.add(new UserModel(user));
         }
         
@@ -121,7 +121,7 @@ public class UserService {
         return page;
     }
     
-    public User getCurrentUser() {
+    public Person getCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && !"anonymousUser".equals(authentication.getName())) {
             return userRepository.findByUsername(authentication.getName());
@@ -129,8 +129,8 @@ public class UserService {
         return null;
     }
     
-    public User updateUser(UserModel model){
-        User user = getCurrentUser();
+    public Person updateUser(UserModel model){
+        Person user = getCurrentUser();
         
         if(!model.getUsername().equals(user.getUsername())){
             if(model.getUsername() != null){
@@ -159,7 +159,7 @@ public class UserService {
     }
     
     
-    public void changeUserPassword(User user, String password) {
+    public void changeUserPassword(Person user, String password) {
         String encoded = bCryptPasswordEncoder.encode(password);
         user.setPassword(encoded);
         userRepository.save(user);
@@ -167,14 +167,14 @@ public class UserService {
     }
     
     @Transactional
-    public User deleteCurrentUser(){
-        User user = getCurrentUser();
+    public Person deleteCurrentUser(){
+        Person user = getCurrentUser();
         userRepository.delete(user);
         return user;
     }
     
     public boolean isNicknameAlreadyExists(String nickname){
-        User user = userRepository.findByUsername(nickname);
+        Person user = userRepository.findByUsername(nickname);
         if(user == null)
             return false;
         else 
@@ -182,32 +182,32 @@ public class UserService {
     }
     
     public boolean isEmailAlreadyExists(String email){
-        User user = userRepository.findByEmail(email);
+        Person user = userRepository.findByEmail(email);
         if(user == null)
             return false;
         else 
             return true;
     }
     
-    public User findByUsername(String username){
+    public Person findByUsername(String username){
         return userRepository.findByUsername(username);
     }
     
-    public User findUserByEmail(String userEmail) {
+    public Person findUserByEmail(String userEmail) {
         return userRepository.findByEmail(userEmail);
     }
-    public void createPasswordResetTokenForUser(User user, String token) {
+    public void createPasswordResetTokenForUser(Person user, String token) {
         PasswordResetToken myToken = new PasswordResetToken(token, user);
         passwordRepository.save(myToken);
     }   
     
-     public MimeMessage constructResetTokenEmail(final String contextPath, final Locale locale, final String token, final User user) throws MessagingException {
+     public MimeMessage constructResetTokenEmail(final String contextPath, final Locale locale, final String token, final Person user) throws MessagingException {
         final String url = "<p><a href=\""+env.getProperty("spring.frontend.url") + "?id=" + user.getUser_id() + "&token=" + token+"\"/>Kliknij tutaj, aby zresetować hasło</a><br>"+env.getProperty("spring.frontend.url") + "?id=" + user.getUser_id() + "&token=" + token+"</p>";
         final String message = "<h2>"+messages.getMessage("message.resetPassword", null, locale)+"</h2>";
         return constructEmail(messages.getMessage("message.resetPasswordEmailTitle", null, locale), message + " \r\n" + url, user);
     }
 
-      private MimeMessage constructEmail(String subject, String body, User user) throws MessagingException {
+      private MimeMessage constructEmail(String subject, String body, Person user) throws MessagingException {
           
         MimeMessage mimeMessage = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
@@ -235,7 +235,7 @@ public class UserService {
         
         passToken.setExpiryDate(new Date());
         passwordRepository.save(passToken);
-        User user = passToken.getUser();
+        Person user = passToken.getUser();
         Authentication auth = new UsernamePasswordAuthenticationToken(
           user, null, Arrays.asList(
           new SimpleGrantedAuthority("CHANGE_PASSWORD_PRIVILEGE")));

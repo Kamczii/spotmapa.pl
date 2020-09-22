@@ -9,7 +9,7 @@ import ch.qos.logback.core.CoreConstants;
 import com.kamczi.entities.Avatar;
 import com.kamczi.entities.Image;
 import com.kamczi.entities.Spot;
-import com.kamczi.entities.User;
+import com.kamczi.entities.Person;
 import com.kamczi.responses.BasicImgurResponse;
 import com.kamczi.responses.DeleteBasicImgurResponse;
 import com.kamczi.models.ImageModel;
@@ -87,7 +87,7 @@ public class ImgurService {
     
     public DeleteBasicImgurResponse deleteProfilePicture() throws IOException{
         
-        User user = userService.getCurrentUser();
+        Person user = userService.getCurrentUser();
         if(user.getAvatar().getDeletehash()!=null){
             
         HttpHeaders headers = new HttpHeaders();
@@ -104,7 +104,7 @@ public class ImgurService {
     }
     
     private void addProfilePictureToDB(ImageModel model){
-        User user = userService.getCurrentUser();
+        Person user = userService.getCurrentUser();
         Avatar entity = new Avatar();
         entity.setDeletehash(model.getDeletehash());
         entity.setImgur_id(model.getId());
@@ -114,7 +114,7 @@ public class ImgurService {
     }
     
     private void deleteProfilePictureIfExistFromDB(){
-        User user = userService.getCurrentUser();
+        Person user = userService.getCurrentUser();
         Avatar avatar = user.getAvatar();
        
         if(avatar != null){
@@ -173,7 +173,7 @@ public class ImgurService {
     
     private void addImageToSpot(ImageModel model, Long spot_id){
         Spot spot = spotRepo.findById(spot_id).get();
-        User user = userService.getCurrentUser();
+        Person user = userService.getCurrentUser();
         Image entity = new Image();
         entity.setDeletehash(model.getDeletehash());
         entity.setImgurId(model.getId());

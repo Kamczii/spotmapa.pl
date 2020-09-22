@@ -31,7 +31,7 @@ import javax.validation.constraints.NotNull;
  * @author Kamil
  */
 @Entity
-public class User {
+public class Person {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long user_id;

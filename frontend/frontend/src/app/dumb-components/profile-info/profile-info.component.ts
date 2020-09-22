@@ -28,7 +28,6 @@ export class ProfileInfoComponent implements OnInit {
       const id = params['id'];
       if (id == this.authService.getUserId())
         this.isUserOwningProfile = true;
-      console.log(id)
       this.profileService.getUserById(id).subscribe(data => { 
         this.user = data;
         this.getSpots();

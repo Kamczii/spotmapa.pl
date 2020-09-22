@@ -30,7 +30,7 @@ class JwtUserDetailsService implements UserDetailsService {
     
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        com.kamczi.entities.User user;
+        com.kamczi.entities.Person user;
         if(isValid(username)){
             user = userRepository.findByEmail(username);
         } else

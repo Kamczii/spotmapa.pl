@@ -5,7 +5,7 @@
  */
 package com.kamczi.models;
 
-import com.kamczi.entities.User;
+import com.kamczi.entities.Person;
 import java.util.Date;
 
 /**
@@ -23,7 +23,7 @@ public class UserModel {
     
     public UserModel(){}
     
-    public UserModel(User user){
+    public UserModel(Person user){
         this.id = user.getUser_id();
         this.email = user.getEmail();
         this.username = user.getUsername();

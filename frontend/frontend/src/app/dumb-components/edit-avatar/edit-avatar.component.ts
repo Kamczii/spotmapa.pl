@@ -55,7 +55,6 @@ export class EditAvatarComponent implements OnInit {
       function (file) {
         that.imageService.uploadAvatar(file).subscribe(data => 
           {
-            console.log(data.data.link)
             that.reset(data.data.link);
           }
           );

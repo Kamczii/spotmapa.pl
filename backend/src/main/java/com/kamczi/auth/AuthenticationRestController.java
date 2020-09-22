@@ -5,7 +5,7 @@
  */
 package com.kamczi.auth;
 import static com.kamczi.auth.SecurityConstants.HEADER_STRING;
-import com.kamczi.entities.User;
+import com.kamczi.entities.Person;
 import com.kamczi.facebook.FacebookUserResponse;
 import com.kamczi.repository.UserRepository;
 import com.kamczi.services.UserService;

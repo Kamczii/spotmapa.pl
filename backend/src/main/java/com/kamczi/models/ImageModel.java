@@ -6,7 +6,7 @@
 package com.kamczi.models;
 
 import com.kamczi.entities.Image;
-import com.kamczi.entities.User;
+import com.kamczi.entities.Person;
 
 /**
  *

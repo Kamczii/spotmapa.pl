@@ -63,10 +63,8 @@ export class LoginFormComponent implements OnInit {
   }
 
   facebookLogin() {
-    console.log("submit login to facebook");
     // FB.login();
     FB.login((response) => {
-      console.log('submitLogin', response);
       if (response.authResponse) {
         this.auth.loginFacebook(response.authResponse.accessToken).subscribe(data => this.auth.handleAuthentication(data.token));
       }

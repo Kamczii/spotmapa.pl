@@ -5,7 +5,7 @@
  */
 package com.kamczi.repository;
 
-import com.kamczi.entities.User;
+import com.kamczi.entities.Person;
 import java.util.List;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -14,8 +14,8 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  *
  * @author Kamil
  */
-public interface UserRepository extends PagingAndSortingRepository<User, Long> {
-    User findByUsername(String username);
-    User findByEmail(String email);
-    List<User> findAll();
+public interface UserRepository extends PagingAndSortingRepository<Person, Long> {
+    Person findByUsername(String username);
+    Person findByEmail(String email);
+    List<Person> findAll();
 }
